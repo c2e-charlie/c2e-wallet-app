@@ -1,10 +1,18 @@
 import React from 'react';
+import {Path} from 'react-native-svg';
 import {screenWidth} from '../../utils';
-import Svg, {Path} from 'react-native-svg';
-import styled from 'styled-components/native';
-import {Animated, Text, StyleSheet} from 'react-native';
+import {Animated, Text} from 'react-native';
 import {useCustomBottom} from '../../hooks/useCustomBottom';
 import {height, icons, upperBorderRadius} from './index.utils';
+import {
+  Tabs,
+  styles,
+  TabItem,
+  TabIcon,
+  StyledSvg,
+  CustomTabBar,
+  TabBarContainer,
+} from './index.styled';
 
 const CustomBottom = ({state, descriptors, navigation}) => {
   const {animatedValues, handlePressIn, handlePressOut} =
@@ -104,54 +112,5 @@ const CustomBottom = ({state, descriptors, navigation}) => {
     </TabBarContainer>
   );
 };
-
-const TabBarContainer = styled.View`
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  height: ${height}px;
-`;
-
-const TabIcon = styled.Image<{isHome: boolean}>`
-  width: ${props => (props.isHome ? 50 : 24)}px;
-  height: ${props => (props.isHome ? 50 : 24)}px;
-  margin-bottom: 5px;
-  margin-top: ${props => (props.isHome ? 0 : 9)}px;
-`;
-
-const StyledSvg = styled(Svg)`
-  position: absolute;
-  top: -20px;
-`;
-
-const Tabs = styled.View`
-  flex: 1;
-  flex-direction: row;
-  justify-content: space-around;
-`;
-
-const TabItem = styled.TouchableOpacity`
-  flex: 1;
-  align-items: center;
-`;
-
-const CustomTabBar = styled.View<{height: number}>`
-  position: absolute;
-  top: -20px;
-  left: 0px;
-  right: 0px;
-  height: ${props => props.height + 20}px;
-`;
-
-const styles = StyleSheet.create({
-  customTabBarShadow: {
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1.5},
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-});
 
 export default CustomBottom;

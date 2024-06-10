@@ -11,14 +11,8 @@ module.exports = {
         },
       },
     ],
-    // 추가된 플러그인들
-    [
-      '@babel/plugin-transform-private-methods',
-      { loose: true }, // 모두 동일한 'loose' 모드로 설정
-    ],
-    [
-      '@babel/plugin-transform-private-property-in-object',
-      { loose: true }, // 모두 동일한 'loose' 모드로 설정
-    ],
+
+    ['@babel/plugin-transform-private-methods', { loose: true }],
+    ['@babel/plugin-transform-private-property-in-object', { loose: true }],
   ],
 };

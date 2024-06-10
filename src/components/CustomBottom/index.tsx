@@ -1,9 +1,9 @@
 import React from 'react';
-import {Path} from 'react-native-svg';
-import {screenWidth} from '../../utils';
-import {Animated, Text} from 'react-native';
-import {useCustomBottom} from '../../hooks/useCustomBottom';
-import {height, icons, upperBorderRadius} from './index.utils';
+import { Path } from 'react-native-svg';
+import { screenWidth } from '../../utils';
+import { Animated, Text } from 'react-native';
+import { useCustomBottom } from '../../hooks/useCustomBottom';
+import { height, icons, upperBorderRadius } from './index.utils';
 import {
   Tabs,
   styles,
@@ -14,8 +14,8 @@ import {
   TabBarContainer,
 } from './index.styled';
 
-const CustomBottom = ({state, descriptors, navigation}) => {
-  const {animatedValues, handlePressIn, handlePressOut} =
+const CustomBottom = ({ state, descriptors, navigation }) => {
+  const { animatedValues, handlePressIn, handlePressOut } =
     useCustomBottom(state);
 
   return (
@@ -43,7 +43,7 @@ const CustomBottom = ({state, descriptors, navigation}) => {
         </StyledSvg>
         <Tabs>
           {state.routes.map((route, index) => {
-            const {options} = descriptors[route.key];
+            const { options } = descriptors[route.key];
             const label =
               options.tabBarLabel !== undefined
                 ? options.tabBarLabel
@@ -70,7 +70,7 @@ const CustomBottom = ({state, descriptors, navigation}) => {
                 key={index}
                 activeOpacity={1}
                 accessibilityRole="button"
-                accessibilityState={isFocused ? {selected: true} : {}}
+                accessibilityState={isFocused ? { selected: true } : {}}
                 accessibilityLabel={options.tabBarAccessibilityLabel}
                 testID={options.tabBarTestID}
                 onPress={() => onPress()}

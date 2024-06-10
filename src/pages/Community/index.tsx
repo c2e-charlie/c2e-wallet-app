@@ -1,5 +1,6 @@
+import CustomButton from '@/components/CustomButton';
 import React from 'react';
-import {View, Text} from 'react-native';
+import { View, Text } from 'react-native';
 
 const Community = () => {
   return (
@@ -11,6 +12,7 @@ const Community = () => {
         alignItems: 'center',
       }}>
       <Text>Community</Text>
+      <CustomButton />
     </View>
   );
 };

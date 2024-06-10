@@ -10,10 +10,14 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "public/*": ["public/*"]
+    }
   },
   "exclude": [
-    // 타입 검사에서 제외할 파일 및 디렉토리 목록
     "node_modules",
     "babel.config.js",
     "metro.config.js",

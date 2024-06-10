@@ -1,7 +1,7 @@
 import Svg from 'react-native-svg';
 import styled from 'styled-components/native';
-import {StyleSheet} from 'react-native';
-import {height} from './index.utils';
+import { StyleSheet } from 'react-native';
+import { height } from './index.utils';
 
 export const TabBarContainer = styled.View`
   position: absolute;
@@ -11,7 +11,7 @@ export const TabBarContainer = styled.View`
   height: ${height}px;
 `;
 
-export const TabIcon = styled.Image<{isHome: boolean}>`
+export const TabIcon = styled.Image<{ isHome: boolean }>`
   width: ${props => (props.isHome ? 50 : 24)}px;
   height: ${props => (props.isHome ? 50 : 24)}px;
   margin-bottom: 5px;
@@ -34,7 +34,7 @@ export const TabItem = styled.TouchableOpacity`
   align-items: center;
 `;
 
-export const CustomTabBar = styled.View<{height: number}>`
+export const CustomTabBar = styled.View<{ height: number }>`
   position: absolute;
   top: -20px;
   left: 0px;
@@ -45,7 +45,7 @@ export const CustomTabBar = styled.View<{height: number}>`
 export const styles = StyleSheet.create({
   customTabBarShadow: {
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1.5},
+    shadowOffset: { width: 0, height: 1.5 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,

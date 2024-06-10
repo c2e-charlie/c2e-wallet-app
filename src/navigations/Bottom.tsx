@@ -5,7 +5,7 @@ import Wallet from '../pages/Wallet';
 import Community from '../pages/Community';
 import VendingMachine from '../pages/VendingMachine';
 import CustomBottom from '../components/CustomBottom';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 const BottomNavigator = () => {

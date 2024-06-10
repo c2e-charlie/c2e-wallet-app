@@ -10,7 +10,16 @@ import {
 export const height = 55; // svg 높이
 export const upperBorderRadius = 20;
 
-export const icons = {
+type IconType = {
+  focus: any;
+  notFocus: any;
+};
+
+type IconsType = {
+  [key: string]: IconType;
+};
+
+export const icons: IconsType = {
   Home: {
     focus: c2e_focus_icon,
     notFocus: c2e_icon,

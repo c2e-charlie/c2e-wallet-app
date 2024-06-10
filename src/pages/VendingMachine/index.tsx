@@ -1,5 +1,7 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import { View } from 'react-native';
+import QrcodeScanner from '../../components/QrcodeScanner';
+import QrcodeGenerator from '../../components/QrcodeGenerator';
 
 const VendingMachine = () => {
   return (
@@ -10,7 +12,8 @@ const VendingMachine = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text>VendingMachine</Text>
+      <QrcodeScanner />
+      <QrcodeGenerator />
     </View>
   );
 };

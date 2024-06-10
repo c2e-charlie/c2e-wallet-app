@@ -3,7 +3,16 @@ const path = require('path');
 
 const defaultConfig = getDefaultConfig(__dirname);
 
+/**
+ * Metro configuration
+ * https://reactnative.dev/docs/metro
+ *
+ * @type {import('metro-config').MetroConfig}
+ */
 const config = {
+  transformer: {
+    unstable_allowRequireContext: true,
+  },
   resolver: {
     alias: {
       '@': path.resolve(__dirname, 'src'),

@@ -13,8 +13,13 @@ import {
   CustomTabBar,
   TabBarContainer,
 } from './index.styled';
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
-const CustomBottom = ({ state, descriptors, navigation }) => {
+const CustomBottom: React.FC<BottomTabBarProps> = ({
+  state,
+  navigation,
+  descriptors,
+}) => {
   const { animatedValues, handlePressIn, handlePressOut } =
     useCustomBottom(state);
 
@@ -100,7 +105,7 @@ const CustomBottom = ({ state, descriptors, navigation }) => {
                         fontWeight: 800,
                         color: isFocused ? 'black' : 'gray',
                       }}>
-                      {label}
+                      {label as string}
                     </Text>
                   )}
                 </Animated.View>

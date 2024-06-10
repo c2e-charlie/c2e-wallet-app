@@ -5,9 +5,9 @@ import BigNumber from 'bignumber.js';
 import { formatNumber } from '../../utils/utils';
 
 const Home = () => {
-  const myPoint = 500000;
-  const dailyMaxChangeC2e = 10;
-  const exChangeRate = 0.12;
+  const myPoint = 500;
+  const dailyMaxChangeC2e = 13;
+  const exChangeRate = 0.5;
   const [inputPoint, setInputPoint] = useState<string>('');
   const [C2E, setC2E] = useState<string>('');
 
@@ -19,9 +19,9 @@ const Home = () => {
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        onChangeText={text => {
+        onChangeText={input => {
           handleInputChange(
-            text,
+            input,
             myPoint,
             dailyMaxChangeC2e,
             exChangeRate,

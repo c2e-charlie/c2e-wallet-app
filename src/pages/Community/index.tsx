@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import { View, Text } from 'react-native';
 
 const Community = () => {
   return (
@@ -10,7 +10,11 @@ const Community = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text>Community</Text>
+      <Text numberOfLines={1} ellipsizeMode="middle">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. CurabiturLorem
+        ipsum dolor sit amet, consectetur adipiscing elit. CurabiturLorem ipsum
+        dolor sit amet, consectetur adipiscing elit. Curabitur
+      </Text>
     </View>
   );
 };

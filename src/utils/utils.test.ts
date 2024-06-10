@@ -2,8 +2,8 @@ import { formatNumber } from './utils';
 
 describe('formatNumber', () => {
   it('should format a number correctly', () => {
-    expect(formatNumber(1234567.891)).toBe('1,234,567.891');
-    expect(formatNumber('1234567.891')).toBe('1,234,567.891');
+    expect(formatNumber(1234567.8912)).toBe('1,234,567.891');
+    expect(formatNumber('1234567.8912')).toBe('1,234,567.891');
     expect(formatNumber(1234567)).toBe('1,234,567');
     expect(formatNumber('1234567')).toBe('1,234,567');
   });

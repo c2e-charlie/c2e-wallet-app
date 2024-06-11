@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import CustomButton from '@/components/CustomButton';
+import React from 'react';
 import { View, Text } from 'react-native';
-import RandomKeyPad from '../../components/RandomKeyPad';
-import Keypad from '../../components/KeyPad';
 
 const Community = () => {
-  const [value, setValue] = useState('');
-
   return (
     <View
       style={{
@@ -15,8 +12,7 @@ const Community = () => {
         alignItems: 'center',
       }}>
       <Text>Community</Text>
-      {/*<RandomKeyPad onValueChange={setValue} />*/}
-      {/*<Keypad onValueChange={setValue} />*/}
+      <CustomButton />
     </View>
   );
 };

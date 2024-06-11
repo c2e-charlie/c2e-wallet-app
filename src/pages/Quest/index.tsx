@@ -1,7 +1,10 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
+import Keypad from '../../components/KeyPad';
+import RandomKeyPad from '../../components/RandomKeyPad';
 
 const Quest = () => {
+  const [value, setValue] = useState('');
   return (
     <View
       style={{
@@ -11,6 +14,9 @@ const Quest = () => {
         alignItems: 'center',
       }}>
       <Text>Quest</Text>
+      <Text>{value}</Text>
+      {/*<Keypad onValueChange={setValue} />*/}
+      <RandomKeyPad onValueChange={setValue} />
     </View>
   );
 };

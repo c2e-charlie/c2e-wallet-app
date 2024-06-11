@@ -11,14 +11,11 @@ import {
   shuffle,
 } from '@/components/KeyPad/RandomPad/index.utils';
 import { Modal, Text, View } from 'react-native';
+import { NumberPadProps } from '@/components/KeyPad/_index.type';
 import FaceIdIcon from 'public/assets/images/icons/login/faceid_icon.png';
 import ArrowLeft from 'public/assets/images/icons/login/arrow_left.png';
 
-const RandomKeyPad = ({
-  onValueChange,
-}: {
-  onValueChange: (value: string | ((prevValue: string) => string)) => void;
-}) => {
+const RandomKeyPad = ({ onValueChange }: NumberPadProps) => {
   const [numbers, setNumbers] = useState<(number | string)[]>([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
 

@@ -6,13 +6,10 @@ import {
   Container,
 } from '../_index.styled';
 import { handlePress } from '@/components/KeyPad/NumberPad/index.utils';
+import { NumberPadProps } from '@/components/KeyPad/_index.type';
 import ArrowLeft from 'public/assets/images/icons/login/arrow_left.png';
 
-const Keypad = ({
-  onValueChange,
-}: {
-  onValueChange: (value: string | ((prevValue: string) => string)) => void;
-}) => {
+const Keypad = ({ onValueChange }: NumberPadProps) => {
   return (
     <Container>
       {['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', 'C'].map(

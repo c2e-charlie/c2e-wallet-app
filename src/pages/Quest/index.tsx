@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
-import Keypad from '../../components/KeyPad';
-import RandomKeyPad from '../../components/RandomKeyPad';
+// import RandomKeyPad from '@/components/KeyPad/RandomPad';
+import Keypad from '@/components/KeyPad/NumberPad';
 
 const Quest = () => {
   const [value, setValue] = useState('');
@@ -15,8 +15,8 @@ const Quest = () => {
       }}>
       <Text>Quest</Text>
       <Text>{value}</Text>
-      {/*<Keypad onValueChange={setValue} />*/}
-      <RandomKeyPad onValueChange={setValue} />
+      <Keypad onValueChange={setValue} />
+      {/*<RandomKeyPad onValueChange={setValue} />*/}
     </View>
   );
 };

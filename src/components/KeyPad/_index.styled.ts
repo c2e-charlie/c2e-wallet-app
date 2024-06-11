@@ -22,3 +22,8 @@ export const ButtonText = styled.Text`
   font-size: 26px;
   color: #444447;
 `;
+
+export const ArrowLeftImage = styled.Image`
+  width: 28px;
+  height: 28px;
+`;

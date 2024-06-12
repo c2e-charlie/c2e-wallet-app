@@ -8,9 +8,13 @@ const CheckboxMeta: Meta<typeof CustomCheckbox> = {
   argTypes: {
     onPress: { action: 'pressed the checkbox' },
     checked: { control: 'boolean' },
+    width: { control: 'number' },
+    height: { control: 'number' },
   },
   args: {
     checked: true,
+    width: 30,
+    height: 30,
   },
   decorators: [
     Story => (

@@ -1,7 +1,8 @@
 import CustomButton from '@/components/CustomButton';
-import CustomCheckbox from '@/components/CustomCheckbox';
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+
 
 const Community = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -19,7 +20,12 @@ const Community = () => {
         alignItems: 'center',
       }}>
       <Text>Community</Text>
-      <CustomCheckbox checked={isChecked} onPress={handleCheckbox} />
+      <CustomButton
+        onPress={() => {}}
+        gradientColors={['#1BE0CD', '#47C8FC']}
+        text="test"
+        fullWidth
+      />
     </View>
   );
 };

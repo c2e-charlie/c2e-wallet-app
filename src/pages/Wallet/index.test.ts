@@ -1,4 +1,4 @@
-import { copyToClipboard } from './index.utils'; // 경로를 실제 파일 경로로 변경하세요.
+import { copyToClipboard } from './index.utils';
 import Clipboard from '@react-native-clipboard/clipboard';
 
 jest.mock('@react-native-clipboard/clipboard', () => ({

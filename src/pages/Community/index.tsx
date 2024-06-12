@@ -1,15 +1,8 @@
 import CustomButton from '@/components/CustomButton';
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import React from 'react';
+import { View, Text } from 'react-native';
 
 const Community = () => {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleCheckbox = () => {
-    setIsChecked(!isChecked);
-  };
-
   return (
     <View
       style={{

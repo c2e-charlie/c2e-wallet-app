@@ -1,8 +1,15 @@
 import CustomButton from '@/components/CustomButton';
-import React from 'react';
+import CustomCheckbox from '@/components/CustomCheckbox';
+import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 
 const Community = () => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckbox = () => {
+    setIsChecked(!isChecked);
+  };
+
   return (
     <View
       style={{
@@ -12,7 +19,7 @@ const Community = () => {
         alignItems: 'center',
       }}>
       <Text>Community</Text>
-      <CustomButton />
+      <CustomCheckbox checked={isChecked} onPress={handleCheckbox} />
     </View>
   );
 };

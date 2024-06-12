@@ -1,6 +1,7 @@
 import CustomButton from '@/components/CustomButton';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 const Community = () => {
   return (
@@ -12,7 +13,12 @@ const Community = () => {
         alignItems: 'center',
       }}>
       <Text>Community</Text>
-      <CustomButton />
+      <CustomButton
+        onPress={() => {}}
+        gradientColors={['#1BE0CD', '#47C8FC']}
+        text="test"
+        fullWidth
+      />
     </View>
   );
 };

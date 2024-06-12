@@ -1,10 +1,12 @@
 const theme = {
   colors: {
-    primary: '#6200ea',
-    secondary: '#03dac6',
+    primary: '#1BE0CD',
+    secondary: '#8EB0FA',
     background: '#f5f5f5',
     text: '#000000',
     textInverse: '#ffffff',
+    disableButton: '#F0F0F3',
+    disableText: '#9BA1B1',
   },
   spacing: {
     small: 8,

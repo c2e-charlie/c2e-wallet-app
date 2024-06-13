@@ -27,4 +27,4 @@ const CheckboxMeta: Meta<typeof CustomCheckbox> = {
 
 export default CheckboxMeta;
 
-export const Basic: StoryObj<typeof CustomCheckbox> = {};
+export const Default: StoryObj<typeof CustomCheckbox> = {};

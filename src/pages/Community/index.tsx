@@ -1,8 +1,10 @@
-import CustomButton from '@/components/CustomButton';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
+import Modal, { modalStateAtom } from '@/components/Modal';
+import { useAtom } from 'jotai';
 
 const Community = () => {
+  const [isModalState, setIsModalState] = useAtom(modalStateAtom);
   return (
     <View
       style={{
@@ -11,13 +13,13 @@ const Community = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
+      <Button onPress={() => setIsModalState(true)} title={'Open Modal'} />
       <Text>Community</Text>
-      <CustomButton
-        onPress={() => {}}
-        gradientColors={['#1BE0CD', '#47C8FC']}
-        text="test"
-        fullWidth
-      />
+      {isModalState && (
+        <Modal isModalState={isModalState} setIsModalState={setIsModalState}>
+          <Text> 모달입니다. </Text>
+        </Modal>
+      )}
     </View>
   );
 };

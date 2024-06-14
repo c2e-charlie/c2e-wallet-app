@@ -1,6 +1,8 @@
 # OSX
 #
 .DS_Store
+yarn.lock
+ios/Podfile.lock
 
 # Xcode
 #
@@ -67,7 +69,6 @@ package-lock.json
 /coverage
 
 # Yarn
-yarn.lock
 .yarn/*
 !.yarn/patches
 !.yarn/plugins

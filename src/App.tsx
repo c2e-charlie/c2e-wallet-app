@@ -5,6 +5,8 @@ import RootNavigator from './navigations/Stack';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { ThemeProvider } from 'styled-components/native';
 import theme from './theme';
+import Toast from 'react-native-toast-message';
+import { SnackbarConfig } from './configs/SnackbarConfig';
 import SplashScreen from 'react-native-splash-screen';
 
 function App(): React.JSX.Element {
@@ -27,6 +29,9 @@ function App(): React.JSX.Element {
           backgroundColor={backgroundStyle.backgroundColor}
         />
         <RootNavigator />
+        <View style={{ marginHorizontal: 0 }}>
+          <Toast config={SnackbarConfig} />
+        </View>
       </View>
     </ThemeProvider>
   );

@@ -5,6 +5,8 @@ import RootNavigator from './navigations/Stack';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { ThemeProvider } from 'styled-components/native';
 import theme from './theme';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -16,13 +18,17 @@ function App(): React.JSX.Element {
 
   return (
     <ThemeProvider theme={theme}>
-      <View style={backgroundStyle}>
-        <StatusBar
-          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-          backgroundColor={backgroundStyle.backgroundColor}
-        />
-        <RootNavigator />
-      </View>
+      <GestureHandlerRootView>
+        <BottomSheetModalProvider>
+          <View style={backgroundStyle}>
+            <StatusBar
+              barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+              backgroundColor={backgroundStyle.backgroundColor}
+            />
+            <RootNavigator />
+          </View>
+        </BottomSheetModalProvider>
+      </GestureHandlerRootView>
     </ThemeProvider>
   );
 }

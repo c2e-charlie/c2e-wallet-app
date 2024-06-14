@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { View, Text, Button } from 'react-native';
-import Modal, { modalStateAtom } from '@/components/Modal';
-import { useAtom } from 'jotai';
+import BottomSheetComponent from '@/components/BottomSheet';
+import { handlePresentModalPress } from '@/components/BottomSheet/index.utils';
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
 
 const Community = () => {
-  const [isModalState, setIsModalState] = useAtom(modalStateAtom);
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+
+  const handleModalPress = handlePresentModalPress(bottomSheetModalRef);
+
   return (
     <View
       style={{
@@ -13,13 +17,11 @@ const Community = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Button onPress={() => setIsModalState(true)} title={'Open Modal'} />
       <Text>Community</Text>
-      {isModalState && (
-        <Modal isModalState={isModalState} setIsModalState={setIsModalState}>
-          <Text> 모달입니다. </Text>
-        </Modal>
-      )}
+      <Button title={'Open Bottom Sheet'} onPress={handleModalPress} />
+      <BottomSheetComponent ref={bottomSheetModalRef}>
+        <Text>버디버디</Text>
+      </BottomSheetComponent>
     </View>
   );
 };

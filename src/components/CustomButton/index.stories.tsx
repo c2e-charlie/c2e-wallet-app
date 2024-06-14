@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ThemeProvider } from 'styled-components/native';
 
 const ButtonMeta: Meta<typeof CustomButton> = {
-  title: 'CustomButton',
+  title: 'Button',
   component: CustomButton,
   argTypes: {
     onPress: { action: 'pressed the button' },
@@ -45,7 +45,7 @@ const ButtonMeta: Meta<typeof CustomButton> = {
 
 export default ButtonMeta;
 
-export const Basic: StoryObj<typeof CustomButton> = {
+export const Default: StoryObj<typeof CustomButton> = {
   args: {
     text: 'CustomButton',
   },

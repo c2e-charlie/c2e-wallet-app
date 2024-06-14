@@ -16,4 +16,5 @@ export type ButtonProps = {
   fullWidth?: boolean;
   disabledType2?: boolean;
   gradientColors?: string[];
+  fontWeight?: any;
 };

@@ -19,6 +19,7 @@ const CustomButton = ({
   gradientColors = [],
   backgroundColor,
   disabledType2,
+  fontWeight,
 }: ButtonProps) => {
   return (
     <ButtonContainer
@@ -34,7 +35,9 @@ const CustomButton = ({
       activeOpacity={0.5}>
       {gradientColors && gradientColors.length > 0 ? (
         <LinearGradient
-          colors={gradientColors}
+          colors={
+            disabledType2 && disabled ? ['#F0F0F3', '#F0F0F3'] : gradientColors
+          }
           style={{
             ...styles.gradientBackground,
             borderRadius: 30,
@@ -48,10 +51,12 @@ const CustomButton = ({
             disabled={disabled}
             disabledType2={disabledType2}
             endIcon={endIcon}
+            fontWeight={fontWeight}
           />
         </LinearGradient>
       ) : (
         <CustomButtonContent
+          fontWeight={fontWeight}
           type={type}
           onlyIcon={onlyIcon}
           startIcon={startIcon}

@@ -10,6 +10,7 @@ export const IconWithText = ({
   disabled,
   disabledType2,
   endIcon,
+  fontWeight,
 }: ButtonProps) => (
   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
     {startIcon && (
@@ -18,7 +19,11 @@ export const IconWithText = ({
         style={{ width: 20, height: 20, marginRight: 10.1 }}
       />
     )}
-    <ButtonText disabled={disabled} disabledType2={disabledType2} color={color}>
+    <ButtonText
+      fontWeight={fontWeight}
+      disabled={disabled}
+      disabledType2={disabledType2}
+      color={color}>
       {text}
     </ButtonText>
     {endIcon && (
@@ -39,6 +44,7 @@ const CustomButtonContent = ({
   disabled,
   disabledType2,
   endIcon,
+  fontWeight,
 }: ButtonProps) => {
   if (type === 'loading') {
     return <Image source={button_loading} />;
@@ -56,6 +62,7 @@ const CustomButtonContent = ({
       disabled={disabled}
       disabledType2={disabledType2}
       endIcon={endIcon}
+      fontWeight={fontWeight}
     />
   );
 };

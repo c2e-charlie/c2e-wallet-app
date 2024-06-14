@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar, useColorScheme, View } from 'react-native';
 import 'react-native-gesture-handler';
 import RootNavigator from './navigations/Stack';
@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components/native';
 import theme from './theme';
 import Toast from 'react-native-toast-message';
 import { SnackbarConfig } from './configs/SnackbarConfig';
+import SplashScreen from 'react-native-splash-screen';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -15,6 +16,10 @@ function App(): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     flex: 1,
   };
+
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>

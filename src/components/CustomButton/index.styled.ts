@@ -37,12 +37,14 @@ export const ButtonContainer = styled.TouchableOpacity<{
 export const ButtonText = styled.Text<{
   color?: string;
   disabledType2?: boolean;
+  fontWeight?: any;
 }>`
   color: ${({ theme, color, disabledType2, disabled }) =>
     disabledType2 && disabled
       ? theme.colors.disableText
       : color || theme.colors.textInverse};
   font-size: ${({ theme }) => theme.fontSize.medium}px;
+  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : 'normal')};
 `;
 
 export const styles = StyleSheet.create({

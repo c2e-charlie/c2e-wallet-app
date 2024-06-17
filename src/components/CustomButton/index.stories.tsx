@@ -30,6 +30,7 @@ const ButtonMeta: Meta<typeof CustomButton> = {
     fullWidth: true,
     disabledType2: false,
     disabled: false,
+    fontWeight: '800',
   },
   decorators: [
     Story => (

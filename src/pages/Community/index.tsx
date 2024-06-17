@@ -1,17 +1,16 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import CustomButton from '@/components/CustomButton';
-import Toast from 'react-native-toast-message';
+import React, { useRef } from 'react';
+import { View, Text, Button } from 'react-native';
+import Modal, { modalStateAtom } from '@/components/Modal';
+import { useAtom } from 'jotai';
+import BottomSheetComponent from '@/components/BottomSheet';
+import { handlePresentModalPress } from '@/components/BottomSheet/index.utils';
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
 
 const Community = () => {
-  const handleClickButton = () => {
-    Toast.show({
-      type: 'error_02',
-      props: { uuid: 'test1234' },
-      text1: '잘못된 주소 형식입니다',
-      position: 'bottom',
-    });
-  };
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+  const [isModalState, setIsModalState] = useAtom(modalStateAtom);
+
+  const handleModalPress = handlePresentModalPress(bottomSheetModalRef);
 
   return (
     <View
@@ -22,12 +21,15 @@ const Community = () => {
         alignItems: 'center',
       }}>
       <Text>Community</Text>
-      <CustomButton
-        onPress={handleClickButton}
-        gradientColors={['#1BE0CD', '#47C8FC']}
-        text="test"
-        fullWidth
-      />
+      <Button title={'Open Bottom Sheet'} onPress={handleModalPress} />
+      <BottomSheetComponent ref={bottomSheetModalRef}>
+        <Button onPress={() => setIsModalState(true)} title={'모달 버튼'} />
+      </BottomSheetComponent>
+      {isModalState && (
+        <Modal isModalState={isModalState} setIsModalState={setIsModalState}>
+          <Text> 모달입니다. </Text>
+        </Modal>
+      )}
     </View>
   );
 };

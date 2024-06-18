@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
-import { CustomInputPropsType } from '@/components/CustomInput/index.type';
+import {
+  CustomButtonPropsType,
+  CustomInputPropsType,
+} from '@/components/CustomInput/index.type';
 import {
   CleanButton,
   CleanIcon,
   Container,
+  FillButton,
+  FillButtonText,
   Input,
+  Test,
 } from '@/components/CustomInput/index.styled';
 import { handleBlur, handleFocus } from '@/components/CustomInput/index.utils';
 import InputCleanIcon from 'public/assets/images/icons/CustomInput/input_clean_icon.png';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import CustomButton from '@/components/CustomButton';
 
 const Index = ({
   type = 'border',
@@ -16,6 +23,7 @@ const Index = ({
   setValue = () => {},
   placeholder = 'Placeholder',
   isError = false,
+  fillOnPress,
 }: CustomInputPropsType) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
@@ -31,7 +39,9 @@ const Index = ({
         onBlur={() => handleBlur(setIsFocused)}
       />
       {type === 'fill' ? (
-        <Text>Max</Text>
+        <FillButton onPress={fillOnPress}>
+          <FillButtonText>Max</FillButtonText>
+        </FillButton>
       ) : (
         <CleanButton onPress={() => setValue('')}>
           {value.length > 0 && <CleanIcon source={InputCleanIcon} />}

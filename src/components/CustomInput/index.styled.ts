@@ -52,7 +52,13 @@ export const Container = styled.View<ContainerPropsType>`
 `;
 
 export const Input = styled.TextInput<InputTypeProps>`
-  width: 88%;
+  width: ${({ type }) => {
+    if (type === 'fill') {
+      return '81%';
+    } else {
+      return '88%';
+    }
+  }};
   font-size: ${({ type }) => {
     if (type === 'underline') {
       return '18px';
@@ -81,4 +87,29 @@ export const CleanButton = styled.TouchableOpacity`
 export const CleanIcon = styled.Image`
   width: 100%;
   height: 100%;
+`;
+
+export const FillButton = styled.TouchableOpacity`
+  width: 54px;
+  height: 32px;
+  border-radius: 20px;
+  background-color: #8eb0fa;
+  shadow-color: #000;
+  shadow-offset: 0px 0px;
+  shadow-opacity: 0.5;
+  shadow-radius: 1px;
+  elevation: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const FillButtonText = styled.Text`
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+`;
+
+export const Test = styled.View`
+  width: 54px;
+  height: 32px;
 `;

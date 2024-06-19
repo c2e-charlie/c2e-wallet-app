@@ -17,7 +17,7 @@ export const useBiometrics = () => {
   const navigation = useNavigation<LoginScreenNavigationProp>();
 
   const handleNavigateBtn = () => {
-    navigation.navigate('BottomNavigator');
+    navigation.navigate('Bottom');
   };
 
   // 생체 인식 가능 여부

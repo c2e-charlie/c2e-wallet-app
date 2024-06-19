@@ -23,6 +23,9 @@ const CustomBottom: React.FC<BottomTabBarProps> = ({
   const { animatedValues, handlePressIn, handlePressOut } =
     useCustomBottom(state);
 
+  const isCommunityRoute =
+    state.routes[state.index].name.toLowerCase() === 'community';
+
   return (
     <TabBarContainer>
       <CustomTabBar height={height} style={styles.customTabBarShadow}>
@@ -43,7 +46,7 @@ const CustomBottom: React.FC<BottomTabBarProps> = ({
               Z`}
             fill="white"
             stroke="lightgrey"
-            strokeWidth={0}
+            strokeWidth={isCommunityRoute ? 1 : 0}
           />
         </StyledSvg>
         <Tabs>

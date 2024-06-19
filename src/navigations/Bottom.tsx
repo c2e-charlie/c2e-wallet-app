@@ -8,7 +8,7 @@ import CustomBottom from '../components/CustomBottom';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
-const BottomNavigator = () => {
+const Bottom = () => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -56,4 +56,4 @@ const BottomNavigator = () => {
   );
 };
 
-export default BottomNavigator;
+export default Bottom;

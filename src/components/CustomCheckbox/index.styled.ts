@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const CheckboxContainer = styled.TouchableOpacity`
-  padding: 15px;
+  padding: 10px;
 `;
 
 export const Checkbox = styled.View<{

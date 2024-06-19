@@ -35,8 +35,6 @@ const PasswordContent = (props: any) => {
     setReconfirmResetPassword,
   } = props;
 
-  console.log('checkPassword', checkPassword);
-
   return (
     <PasswordView>
       <PasswordUpperSection>

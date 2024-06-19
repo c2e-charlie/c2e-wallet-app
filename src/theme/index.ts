@@ -18,6 +18,9 @@ const theme = {
     medium: 16,
     large: 20,
   },
+  fontColor: {
+    block: '#444447',
+  },
 };
 
 export default theme;

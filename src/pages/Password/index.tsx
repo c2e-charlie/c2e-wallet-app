@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { PasswordStateType } from './index.types';
 import { PasswordContainer } from './index.styled';
 import { useBiometrics } from '@/hooks/useBiometrics';
 import { handlePasswordResetBtn } from './index.utils';
@@ -14,12 +15,12 @@ const Password = (props: any) => {
   // type : 'signup' || 'login' || 'reset'
   const serverSavedPasscode = '111111'; // 임의 값
 
-  const [password, setPassword] = useState('');
-  const [checkPassword, setCheckPassword] = useState(false);
-  const [reconfirmPassword, setReconfirmPassword] = useState('');
-  const [passcode, setPasscode] = useState('');
-  const [checkPasscode, setCheckPasscode] = useState(false);
-  const [passwordState, setPasswordState] = useState(() => {
+  const [password, setPassword] = useState<string>('');
+  const [checkPassword, setCheckPassword] = useState<boolean>(false);
+  const [reconfirmPassword, setReconfirmPassword] = useState<string>('');
+  const [passcode, setPasscode] = useState<string>('');
+  const [checkPasscode, setCheckPasscode] = useState<boolean>(false);
+  const [passwordState, setPasswordState] = useState<PasswordStateType>(() => {
     switch (type) {
       case 'signup':
         return 'PASSCODE_SIGNUP';
@@ -31,10 +32,11 @@ const Password = (props: any) => {
         return '';
     }
   });
-  const [failureCount, setFailureCount] = useState(0);
-  const [isModalState, setIsModalState] = useState(false);
-  const [passwordResetModal, setPasswordResetModal] = useState(false);
-  const [passwordResetSuccess, setPasswordResetSuccess] = useState(false);
+  const [failureCount, setFailureCount] = useState<number>(0);
+  const [isModalState, setIsModalState] = useState<boolean>(false);
+  const [passwordResetModal, setPasswordResetModal] = useState<boolean>(false);
+  const [passwordResetSuccess, setPasswordResetSuccess] =
+    useState<boolean>(false);
 
   // password reset
   const [resetPassword, setResetPassword] = useState('');
@@ -60,7 +62,6 @@ const Password = (props: any) => {
   // 회원가입 : PASSCODE_SIGNUP
   // 패스코드 한번 더 입력 : SIGNUP_PASSCODE_RECONFIRM
   // 패스코드 로그인 : PASSCODE_LOGIN
-  // 페이스아이디 로그인 : FACEID_LOGIN
   // 가입한 유저 비번 틀렸을때 : PASSCODE_NOT_CORRECT
   // 가입한 유저 비번 맞음 : PASSCODE_CORRECT
   // 패스코드 재설정 : PASSCODE_RESET
@@ -102,7 +103,6 @@ const Password = (props: any) => {
     ) {
       if (resetPassword === reconfirmResetPassword) {
         setCheckPassword(false);
-        // navigation.navigate('BiometricAuthConfirm');
         setPasswordResetSuccess(true);
       } else {
         setReconfirmResetPassword('');

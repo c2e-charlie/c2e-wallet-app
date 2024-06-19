@@ -22,7 +22,6 @@ const CustomBottom: React.FC<BottomTabBarProps> = ({
 }) => {
   const { animatedValues, handlePressIn, handlePressOut } =
     useCustomBottom(state);
-  console.log('log');
 
   return (
     <TabBarContainer>

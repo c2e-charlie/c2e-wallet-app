@@ -152,8 +152,6 @@ export const useBiometrics = () => {
         }
         setIsModalState(true);
       } catch (error) {}
-    } else {
-      // setIsModalState(true);
     }
   };
 

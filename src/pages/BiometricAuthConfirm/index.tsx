@@ -76,6 +76,7 @@ const BiometricAuthConfirm = () => {
             color={theme.colors.c2e_white_01}
             fontWeight={800}
             onPress={_handleCreateAuth}
+            gradientColors={['#1BE0CD', '#47C8FC']}
           />
         </View>
       </View>

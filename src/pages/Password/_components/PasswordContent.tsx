@@ -2,12 +2,12 @@ import {
   Title,
   AlertText,
   PasswordView,
+  FailureCountText,
   RandomKeyPadView,
   RenderCellContent,
   PasswordAlertView,
   RenderCellContainer,
   PasswordUpperSection,
-  FailureCountText,
 } from '../index.styled';
 import theme from '@/theme';
 import { Text, TouchableOpacity } from 'react-native';
@@ -29,12 +29,19 @@ const PasswordContent = (props: any) => {
     failureCount,
     maxFailureCount,
     handlePasswordResetBtn,
+    resetPassword,
+    setResetPassword,
+    reconfirmResetPassword,
+    setReconfirmResetPassword,
   } = props;
+
+  console.log('checkPassword', checkPassword);
 
   return (
     <PasswordView>
       <PasswordUpperSection>
-        {passwordState === 'SIGNUP_PASSCODE_RECONFIRM' ? (
+        {passwordState === 'SIGNUP_PASSCODE_RECONFIRM' ||
+        passwordState === 'PASSCODE_RESET_RECONFIRM' ? (
           <>
             <Title>간편 비밀번호를</Title>
             <Title>한번 더 입력해주세요</Title>
@@ -51,6 +58,8 @@ const PasswordContent = (props: any) => {
               </FailureCountText>
             </Title>
           </>
+        ) : passwordState === 'PASSCODE_RESET' ? (
+          <Title>새로운 비밀번호를 입력하세요</Title>
         ) : (
           <>
             <Title>간편 비밀번호를</Title>
@@ -66,6 +75,10 @@ const PasswordContent = (props: any) => {
                 : passwordState === 'PASSCODE_LOGIN' ||
                   passwordState === 'PASSCODE_NOT_CORRECT'
                 ? passcode
+                : passwordState === 'PASSCODE_RESET'
+                ? resetPassword
+                : passwordState === 'PASSCODE_RESET_RECONFIRM'
+                ? reconfirmResetPassword
                 : password,
             )}
           </RenderCellContent>
@@ -74,7 +87,7 @@ const PasswordContent = (props: any) => {
             <AlertText>비밀번호가 일치하지 않습니다</AlertText>
           </PasswordAlertView>
 
-          <PasswordAlertView checkPassword={checkPasscode}>
+          <PasswordAlertView checkPasscode={checkPasscode}>
             <AlertText>총 5회 입력 실패 시</AlertText>
             <AlertText>비밀번호 재설정이 진행됩니다.</AlertText>
           </PasswordAlertView>
@@ -92,6 +105,10 @@ const PasswordContent = (props: any) => {
               setReconfirmPassword,
               setPasscode,
               passwordState,
+              resetPassword,
+              setResetPassword,
+              reconfirmResetPassword,
+              setReconfirmResetPassword,
             )
           }
         />

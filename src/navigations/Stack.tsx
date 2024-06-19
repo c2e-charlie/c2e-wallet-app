@@ -1,13 +1,13 @@
 import React from 'react';
+import Login from '@/pages/Login';
 import BottomNavigator from './Bottom';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 import Nickname from '@/pages/Nickname';
 import Password from '@/pages/Password';
-import BiometricAuthConfirm from '@/pages/BiometricAuthConfirm';
 import TermsAndUse from '@/pages/TermsAndUse';
-import Login from '@/pages/Login';
 import PasswordReset from '@/pages/PasswordReset';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import BiometricAuthConfirm from '@/pages/BiometricAuthConfirm';
 
 const Stack = createStackNavigator();
 

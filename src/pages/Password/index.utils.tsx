@@ -1,6 +1,4 @@
 import theme from '@/theme';
-import { LoginScreenNavigationProp } from '@/types/navigation';
-import { useNavigation } from '@react-navigation/native';
 import { View, StyleSheet } from 'react-native';
 
 export const handleValueChange = (
@@ -11,6 +9,10 @@ export const handleValueChange = (
   setReconfirmPassword: any,
   setPasscode: any,
   passwordState: string,
+  resetPassword: string,
+  setResetPassword: any,
+  reconfirmResetPassword: string,
+  setReconfirmResetPassword: any,
 ) => {
   if (
     passwordState === 'PASSCODE_LOGIN' ||
@@ -25,6 +27,14 @@ export const handleValueChange = (
     } else if (passwordState === 'SIGNUP_PASSCODE_RECONFIRM') {
       if (reconfirmPassword?.length < 6) {
         setReconfirmPassword(value);
+      }
+    } else if (passwordState === 'PASSCODE_RESET') {
+      if (resetPassword.length < 6) {
+        setResetPassword(value);
+      }
+    } else if (passwordState === 'PASSCODE_RESET_RECONFIRM') {
+      if (reconfirmResetPassword.length < 6) {
+        setReconfirmResetPassword(value);
       }
     }
   }

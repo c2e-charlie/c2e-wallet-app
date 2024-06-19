@@ -9,6 +9,7 @@ module.exports = {
           '@': './src',
           public: './public',
         },
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
       },
     ],
 

@@ -213,6 +213,7 @@ const Nickname = () => {
             text="다음"
             fontWeight={800}
             disabled={nickname ? false : true}
+            gradientColors={['#1BE0CD', '#47C8FC']}
           />
         </View>
       </View>

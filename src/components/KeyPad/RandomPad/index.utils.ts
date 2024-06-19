@@ -15,12 +15,11 @@ export const shuffle = (array: any) => {
 export const randomKeyPadHandlePress = (
   input: string,
   setInput: (value: string | ((prevValue: string) => string)) => void,
-  openModal: () => void,
 ) => {
   if (input === 'C') {
     setInput(prevValue => prevValue.slice(0, -1));
-  } else if (input === '.') {
-    openModal();
+  } else if (input === ' ') {
+    return; // 빈 공백 클릭 시 아무것도 하지 않음
   } else {
     setInput(prevValue => prevValue + input);
   }

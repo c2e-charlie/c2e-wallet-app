@@ -79,7 +79,7 @@ export const BalanceBottom = styled.View`
   gap: 12px;
 `;
 
-export const TransactionItem = styled.View`
+export const TransactionItem = styled.TouchableOpacity`
   padding: 14px 0;
   width: 90px;
   border-radius: 30px;

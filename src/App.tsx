@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { useEffect } from 'react';
 import { SafeAreaView, StatusBar, useColorScheme, View } from 'react-native';
 import 'react-native-gesture-handler';
@@ -25,9 +26,9 @@ function App(): React.JSX.Element {
 
   return (
     <ThemeProvider theme={theme}>
-      <GestureHandlerRootView>
+      <GestureHandlerRootView style={{ flex: 1 }}>
         <BottomSheetModalProvider>
-          <View style={backgroundStyle}>
+          <SafeAreaView style={backgroundStyle}>
             <StatusBar
               barStyle={isDarkMode ? 'light-content' : 'dark-content'}
               backgroundColor={backgroundStyle.backgroundColor}
@@ -36,7 +37,7 @@ function App(): React.JSX.Element {
             <View style={{ marginHorizontal: 0 }}>
               <Toast config={SnackbarConfig} />
             </View>
-          </View>
+          </SafeAreaView>
         </BottomSheetModalProvider>
       </GestureHandlerRootView>
     </ThemeProvider>

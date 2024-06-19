@@ -3,11 +3,12 @@ import {
   ContainerPropsType,
   InputTypeProps,
 } from '@/components/CustomInput/index.type';
+import theme from '@/theme';
 
 export const Container = styled.View<ContainerPropsType>`
   padding: ${({ type }) => {
     if (type === 'underline') {
-      return '16px 0';
+      return '12px 0';
     } else if (type === 'fill') {
       return '26px 16px';
     } else {
@@ -24,7 +25,11 @@ export const Container = styled.View<ContainerPropsType>`
     if (type === 'underline') {
       return `
         border-bottom-color: ${
-          isError ? '#EF8382' : isFocused ? '#8EB0FA' : '#D4D4DA'
+          isError
+            ? theme.colors.c2e_red_01
+            : isFocused
+            ? theme.colors.c2e_blue_02
+            : theme.colors.c2e_white_02
         };
         border-bottom-width:2px;
         background-color: #fff;
@@ -32,10 +37,20 @@ export const Container = styled.View<ContainerPropsType>`
     } else if (type === 'border') {
       return `
         border: 1.5px solid ${
-          isError ? '#EF8382' : isFocused ? '#9BA1B1' : '#E6E6E8'
+          isError
+            ? theme.colors.c2e_red_01
+            : isFocused
+            ? theme.colors.c2e_gray_02
+            : '#E6E6E8'
         };
         border-radius: 14px;
-        shadow-color: ${isError ? '#EF8382' : isFocused ? '#9BA1B1' : '#fff'};
+        shadow-color: ${
+          isError
+            ? theme.colors.c2e_red_01
+            : isFocused
+            ? theme.colors.c2e_gray_02
+            : theme.colors.textInverse
+        };
         shadow-offset: 0px 0px;
         shadow-opacity: 0.5;
         shadow-radius: 4px;

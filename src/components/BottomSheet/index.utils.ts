@@ -8,7 +8,6 @@ export const handlePresentModalPress = (
     bottomSheetModalRef.current?.present();
   }, []);
 };
-
 export const handleDismissModalPress = (
   bottomSheetModalRef: React.RefObject<BottomSheetModal>,
 ) => {

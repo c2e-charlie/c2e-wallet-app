@@ -9,9 +9,12 @@ export const modalStateAtom = atom<boolean>(false);
 const Index = ({ children, isModalState, setIsModalState }: ModalProps) => {
   return (
     <Modal isVisible={isModalState}>
-      <View style={{ flex: 0.5, backgroundColor: '#fff' }}>
+      <View
+        style={{
+          backgroundColor: '#fff',
+          borderRadius: 20,
+        }}>
         {children}
-        <Button title="Hide modal" onPress={() => setIsModalState(false)} />
       </View>
     </Modal>
   );

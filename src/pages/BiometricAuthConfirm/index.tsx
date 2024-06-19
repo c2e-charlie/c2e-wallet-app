@@ -15,7 +15,7 @@ const BiometricAuthConfirm = () => {
   const navigation = useNavigation<LoginScreenNavigationProp>();
 
   const handleNextBtn = () => {
-    navigation.navigate('BottomNavigator');
+    navigation.navigate('Bottom');
   };
 
   return (

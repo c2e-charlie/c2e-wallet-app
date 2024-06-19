@@ -65,6 +65,7 @@ const CustomButton = ({
           disabled={disabled}
           disabledType2={disabledType2}
           endIcon={endIcon}
+          fontWeight={fontWeight}
         />
       )}
     </ButtonContainer>

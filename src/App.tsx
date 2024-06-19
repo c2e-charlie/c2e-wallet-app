@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { StatusBar, useColorScheme, View } from 'react-native';
 import 'react-native-gesture-handler';
-import RootNavigator from './navigations/Stack';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { ThemeProvider } from 'styled-components/native';
 import theme from './theme';
@@ -10,6 +9,8 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Toast from 'react-native-toast-message';
 import { SnackbarConfig } from './configs/SnackbarConfig';
 import SplashScreen from 'react-native-splash-screen';
+import Navigations from '@/navigations';
+import { NavigationContainer } from '@react-navigation/native';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -32,7 +33,9 @@ function App(): React.JSX.Element {
               barStyle={isDarkMode ? 'light-content' : 'dark-content'}
               backgroundColor={backgroundStyle.backgroundColor}
             />
-            <RootNavigator />
+            <NavigationContainer>
+              <Navigations />
+            </NavigationContainer>
             <View style={{ marginHorizontal: 0 }}>
               <Toast config={SnackbarConfig} />
             </View>

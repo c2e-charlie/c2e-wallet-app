@@ -6,16 +6,22 @@ interface BottomSheetProps {
   children: React.ReactNode;
   pressBehavior?: 'close' | 'collapse';
   enablePanDownToClose?: boolean;
+  snapPoint?: string[];
 }
 
 const Index: React.ForwardRefRenderFunction<
   BottomSheetModal,
   BottomSheetProps
 > = (
-  { children, pressBehavior = 'close', enablePanDownToClose = true },
+  {
+    children,
+    pressBehavior = 'close',
+    enablePanDownToClose = true,
+    snapPoint = ['50%'],
+  },
   ref,
 ) => {
-  const snapPoints = useMemo(() => ['50%'], []);
+  const snapPoints = useMemo(() => snapPoint, []);
 
   const renderBackdrop = useCallback(
     (props: any) => (

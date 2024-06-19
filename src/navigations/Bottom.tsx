@@ -16,7 +16,7 @@ const BottomNavigator = () => {
         tabBarStyle: {},
       }}
       tabBar={props => <CustomBottom {...props} />}
-      initialRouteName="Community">
+      initialRouteName="Home">
       <Tab.Screen
         options={{
           tabBarLabel: '커뮤니티',
@@ -33,7 +33,7 @@ const BottomNavigator = () => {
       />
       <Tab.Screen
         options={{
-          tabBarLabel: 'C2E',
+          tabBarLabel: 'Home',
         }}
         name="Home"
         component={Home}

@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useEffect } from 'react';
-import { StatusBar, useColorScheme, View } from 'react-native';
+import { SafeAreaView, StatusBar, useColorScheme, View } from 'react-native';
 import 'react-native-gesture-handler';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { ThemeProvider } from 'styled-components/native';

@@ -1,5 +1,5 @@
 import theme from '@/theme';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Modal from '@/components/Modal';
 import { Alert, Image } from 'react-native';
 import styled from 'styled-components/native';

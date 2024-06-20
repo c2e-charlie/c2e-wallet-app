@@ -13,6 +13,7 @@ import theme from '@/theme';
 import { Text, TouchableOpacity } from 'react-native';
 import RandomKeyPad from '@/components/KeyPad/RandomPad';
 import { handleValueChange, renderCircles } from '../index.utils';
+import React from 'react';
 
 const PasswordContent = (props: any) => {
   const {

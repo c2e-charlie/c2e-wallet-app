@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PasswordStateType } from './index.types';
 import { PasswordContainer } from './index.styled';
 import { useBiometrics } from '@/hooks/useBiometrics';

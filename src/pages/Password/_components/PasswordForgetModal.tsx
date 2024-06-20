@@ -2,6 +2,7 @@ import theme from '@/theme';
 import Modal from '@/components/Modal';
 import { View, Text } from 'react-native';
 import CustomButton from '@/components/CustomButton';
+import React from 'react';
 
 const PasswordForgetModal = (props: any) => {
   const { passwordResetModal, setPasswordResetModal, navigation } = props;

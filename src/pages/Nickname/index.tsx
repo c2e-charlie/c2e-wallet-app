@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-inline-styles */
+// Nickname.tsx
 import theme from '@/theme';
 import React, { useState, useEffect, useRef } from 'react';
 import CustomButton from '@/components/CustomButton';
@@ -6,7 +8,6 @@ import { LoginScreenNavigationProp } from '@/types/navigation';
 import {
   View,
   Text,
-  TextInput,
   Keyboard,
   StyleSheet,
   Image,
@@ -21,11 +22,13 @@ import {
 import CustomCheckbox from '@/components/CustomCheckbox';
 import { right_arrow_icon } from 'public/assets/images/icons/login';
 import { useIsFocused } from '@react-navigation/native';
+import { termsOfUseArr, TermOfUse } from './data';
+import CustomInput from '@/components/CustomInput';
 
-const Nickname = () => {
-  const [nickname, setNickname] = useState('');
-  const [isButtonVisible, setIsButtonVisible] = useState(false);
-  const [keyboardHeight, setKeyboardHeight] = useState(0);
+const Nickname: React.FC = () => {
+  const [nickname, setNickname] = useState<string>('');
+  const [isButtonVisible, setIsButtonVisible] = useState<boolean>(false);
+  const [keyboardHeight, setKeyboardHeight] = useState<number>(0);
 
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
 
@@ -67,36 +70,7 @@ const Nickname = () => {
     navigation.replace('Password', { type: 'signup' });
   };
 
-  const termsOfUseArr = [
-    {
-      title: '전체 동의',
-      checked: false,
-      required: false,
-    },
-    {
-      title: '서비스 이용약관 동의',
-      checked: false,
-      required: true,
-    },
-    {
-      title: '개인정보 수집 및 이용동의',
-      checked: false,
-      required: true,
-    },
-    {
-      title: '본인은 만 19세 이상입니다.',
-      checked: false,
-      required: true,
-    },
-    {
-      title: '마케팅 정보 수신 동의',
-      checked: false,
-      required: false,
-      option: true,
-    },
-  ];
-
-  const [termsOfUse, setTermsOfUse] = useState(termsOfUseArr);
+  const [termsOfUse, setTermsOfUse] = useState<TermOfUse[]>(termsOfUseArr);
 
   const handleAllCheck = () => {
     const allChecked = !termsOfUse[0].checked;
@@ -142,7 +116,7 @@ const Nickname = () => {
     }
   }, [isFocused]);
 
-  const checkAllRequiredTerms = () => {
+  const checkAllRequiredTerms = (): boolean => {
     return termsOfUse.filter(term => term.required).every(term => term.checked);
   };
 
@@ -162,7 +136,7 @@ const Nickname = () => {
       <Text
         style={{
           color: theme.colors.c2e_gray_01,
-          fontWeight: 800,
+          fontWeight: '800',
           fontSize: 22,
           lineHeight: 30,
         }}>
@@ -171,7 +145,7 @@ const Nickname = () => {
       <Text
         style={{
           color: theme.colors.c2e_gray_01,
-          fontWeight: 800,
+          fontWeight: '800',
           fontSize: 22,
           lineHeight: 30,
         }}>
@@ -179,12 +153,12 @@ const Nickname = () => {
       </Text>
 
       <View style={{ marginTop: 34 }}>
-        <Text>text input component</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={setNickname}
+        <CustomInput
+          type="underline"
           value={nickname}
-          placeholder="Type something..."
+          setValue={setNickname}
+          placeholder="닉네임을 입력해주세요"
+          isError={false}
         />
       </View>
 
@@ -203,18 +177,13 @@ const Nickname = () => {
             text="나중에"
             backgroundColor={theme.colors.c2e_gray_03}
             color={theme.colors.c2e_gray_02}
-            fontWeight={800}
+            fontWeight={'800'}
             onPress={handleNextBtn}
           />
         </View>
 
         <View style={{ flex: 0.6, marginBottom: 30 }}>
-          <CustomButton
-            text="다음"
-            fontWeight={800}
-            disabled={nickname ? false : true}
-            gradientColors={['#1BE0CD', '#47C8FC']}
-          />
+          <CustomButton text="다음" fontWeight={'800'} disabled={!nickname} />
         </View>
       </View>
 
@@ -229,7 +198,7 @@ const Nickname = () => {
               marginBottom: 16,
               textAlign: 'left',
               fontSize: 22,
-              fontWeight: 800,
+              fontWeight: '800',
               color: theme.colors.c2e_gray_01,
             }}>
             서비스 이용약관
@@ -238,7 +207,7 @@ const Nickname = () => {
             style={{
               textAlign: 'left',
               fontSize: 14,
-              fontWeight: 700,
+              fontWeight: '700',
               color: theme.colors.c2e_gray_04,
             }}>
             C2E wallet 이용을 위한 서비스 약관 동의가 필요합니다.
@@ -276,7 +245,7 @@ const Nickname = () => {
                       <Text
                         style={{
                           fontSize: 16,
-                          fontWeight: 700,
+                          fontWeight: '700',
                           color: theme.colors.c2e_black_02,
                         }}>
                         {value.title}
@@ -298,7 +267,7 @@ const Nickname = () => {
                           paddingHorizontal: 6,
                           backgroundColor: theme.colors.c2e_blue_03,
                           color: theme.colors.c2e_blue_02,
-                          fontWeight: 700,
+                          fontWeight: '700',
                         }}>
                         필수
                       </Text>
@@ -313,7 +282,7 @@ const Nickname = () => {
                           color: theme.colors.c2e_gray_04,
                           borderWidth: 1,
                           borderColor: theme.colors.c2e_gray_02,
-                          fontWeight: 700,
+                          fontWeight: '700',
                         }}>
                         선택
                       </Text>
@@ -340,9 +309,9 @@ const Nickname = () => {
           <View style={{ marginTop: 24 }}>
             <CustomButton
               text="다음"
-              fontWeight={800}
+              fontWeight={'800'}
               backgroundColor={theme.colors.c2e_blue_02}
-              disabled={checkAllRequiredTerms() ? false : true}
+              disabled={!checkAllRequiredTerms()}
               onPress={() => handleTermsNextBtn()}
             />
           </View>
@@ -357,13 +326,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 16,
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 12,
-    paddingHorizontal: 8,
   },
   buttonContainer: {
     position: 'absolute',

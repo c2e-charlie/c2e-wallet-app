@@ -75,3 +75,4 @@ package-lock.json
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+ios/c2eWalletApp.xcworkspace/xcshareddata/swiftpm/Package.resolved

@@ -1,3 +1,4 @@
+import React from 'react';
 import { ButtonProps } from './index.types';
 import { ButtonContainer, styles } from './index.styled';
 import LinearGradient from 'react-native-linear-gradient';
@@ -38,6 +39,7 @@ const CustomButton = ({
           colors={
             disabledType2 && disabled ? ['#F0F0F3', '#F0F0F3'] : gradientColors
           }
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{
             ...styles.gradientBackground,
             borderRadius: 30,
@@ -65,7 +67,6 @@ const CustomButton = ({
           disabled={disabled}
           disabledType2={disabledType2}
           endIcon={endIcon}
-          fontWeight={fontWeight}
         />
       )}
     </ButtonContainer>

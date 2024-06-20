@@ -9,6 +9,7 @@ import CustomButton from '@/components/CustomButton';
 import { useBiometrics } from '@/hooks/useBiometrics';
 import { useNavigation } from '@react-navigation/native';
 import { LoginScreenNavigationProp } from '@/types/navigation';
+import React from 'react';
 
 const BiometricAuthConfirm = () => {
   const { _handleCreateAuth, _handleLoginBiometric } = useBiometrics();

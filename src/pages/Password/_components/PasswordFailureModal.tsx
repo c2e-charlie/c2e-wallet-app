@@ -3,6 +3,7 @@ import Modal from '@/components/Modal';
 import { View, Text, Image } from 'react-native';
 import CustomButton from '@/components/CustomButton';
 import { alert } from 'public/assets/images/icons/common';
+import React from 'react';
 
 const PasswordFailureModal = (props: any) => {
   const { isModalState, setIsModalState } = props;

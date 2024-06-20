@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { c2e_focus_icon } from 'public/assets/images/icons/navigation';
 import { TitleView, ResetView, Title, Description } from './index.styled';
 import { LoginScreenNavigationProp } from '@/types/navigation';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const PasswordReset = () => {
   const [authState, setAuthState] = useState(true);

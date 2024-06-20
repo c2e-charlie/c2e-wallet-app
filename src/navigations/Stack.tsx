@@ -18,7 +18,7 @@ const RootNavigator = () => {
     },
   });
 
-  const userToken = '';
+  const userToken = '123';
 
   const LoginPasswordWrapper = () => {
     return <Password type="login" />;

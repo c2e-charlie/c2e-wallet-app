@@ -6,6 +6,7 @@ import CustomButton from '@/components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { LoginScreenNavigationProp } from '@/types/navigation';
 import { google_icon, speech_bubble } from 'public/assets/images/icons/login';
+import CustomCarousel from '@/components/CustomCarousel';
 
 const Login = () => {
   const navigation = useNavigation<LoginScreenNavigationProp>();
@@ -19,21 +20,13 @@ const Login = () => {
       style={{
         flex: 1,
         backgroundColor: theme.colors.c2e_blue_01,
-        paddingTop: 300,
         flexDirection: 'column',
-        justifyContent: 'space-between',
       }}>
-      <View style={{ alignItems: 'center' }}>
-        <Text style={{ fontWeight: 800, fontSize: 40, paddingTop: 10 }}>
-          REWARDY
-        </Text>
-      </View>
+      <CustomCarousel />
 
       <View
         style={{
           marginHorizontal: 30,
-          marginBottom: 60,
-          alignItems: 'center',
         }}>
         <View
           style={{
@@ -54,16 +47,18 @@ const Login = () => {
             회원가입하고 10P 받기!
           </Text>
         </View>
-        <CustomButton
-          shadow
-          onPress={handleGoogleLoginBtn}
-          text="구글로 로그인하기"
-          startIcon={google_icon}
-          fullWidth
-          backgroundColor={theme.colors.disableButton}
-          color={theme.colors.c2e_gray_01}
-          fontWeight={700}
-        />
+        <View style={{ marginBottom: 20 }}>
+          <CustomButton
+            shadow
+            onPress={handleGoogleLoginBtn}
+            text="구글로 로그인하기"
+            startIcon={google_icon}
+            fullWidth
+            backgroundColor={theme.colors.disableButton}
+            color={theme.colors.c2e_gray_01}
+            fontWeight={700}
+          />
+        </View>
       </View>
     </View>
   );

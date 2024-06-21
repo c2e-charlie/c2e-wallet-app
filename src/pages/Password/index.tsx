@@ -44,15 +44,20 @@ const Password = (props: any) => {
 
   const maxFailureCount = 5;
 
-  const { checkKey, _handleLoginBiometric, NotAvailableBiometricModal } =
-    useBiometrics();
+  const {
+    checkKey,
+    _handleLoginBiometric,
+    NotAvailableBiometricModal,
+    _handleCreateAuth,
+  } = useBiometrics();
 
   useEffect(() => {
     const checkAndLoginBiometrics = async () => {
       const keyExists = await checkKey();
       if (keyExists && type === 'login') {
         console.log('checkKey', keyExists);
-        await _handleLoginBiometric();
+
+        await _handleCreateAuth();
       }
     };
 

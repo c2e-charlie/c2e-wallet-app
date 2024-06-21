@@ -1,3 +1,4 @@
+import theme from '@/theme';
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -26,17 +27,17 @@ export const Item = styled.View`
 export const ItemText = styled.Text`
   font-size: 20px;
   font-weight: bold;
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const styles = StyleSheet.create({
   progressSegmentContainer: {
     flex: 1,
-    backgroundColor: '#FFFFFF66',
+    backgroundColor: theme.colors.c2e_white_03,
   },
   progressSegment: {
     height: 5,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: theme.colors.white,
     borderRadius: 2,
   },
 });

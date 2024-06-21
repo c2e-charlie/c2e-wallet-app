@@ -1,9 +1,10 @@
 import theme from '@/theme';
-import React, { useState } from 'react';
 import Modal from '@/components/Modal';
+import React, { useState } from 'react';
 import { Alert, Image } from 'react-native';
 import styled from 'styled-components/native';
 import CustomButton from '@/components/CustomButton';
+import { DefaultTheme } from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 import { alert } from 'public/assets/images/icons/common';
 import { LoginScreenNavigationProp } from '@/types/navigation';
@@ -211,7 +212,7 @@ const ModalTitle = styled.Text`
   margin: 14px 0 14px 0;
   font-size: 16px;
   line-height: 22px;
-  color: ${({ theme }) => theme.colors.c2e_gray_01};
+  color: ${({ theme }: { theme: DefaultTheme }) => theme.colors.c2e_gray_01};
   font-weight: 500;
 `;
 
@@ -219,7 +220,7 @@ const ModalDescription = styled.Text`
   margin: 0 59px 0 59px;
   margin-bottom: 26px;
   font-size: 14px;
-  color: ${({ theme }) => theme.colors.c2e_gray_01};
+  color: ${({ theme }: { theme: DefaultTheme }) => theme.colors.c2e_gray_01};
   text-align: center;
   line-height: 20px;
 `;

@@ -9,8 +9,8 @@ export const Checkbox = styled.View<{
   width?: number;
   height?: number;
 }>`
-  width: ${({ width }) => (width ? width : 20)}px;
-  height: ${({ height }) => (height ? height : 20)}px;
+  width: ${({ width }: { width: number }) => (width ? width : 20)}px;
+  height: ${({ height }: { height: number }) => (height ? height : 20)}px;
   border-color: #d4d4da;
   border-radius: 6px;
   justify-content: center;
@@ -19,8 +19,8 @@ export const Checkbox = styled.View<{
 `;
 
 export const CheckedImg = styled.Image`
-  width: ${({ width }) => (width ? width : 20)}px;
-  height: ${({ height }) => (height ? height : 20)}px;
+  width: ${({ width }: { width: number }) => (width ? width : 20)}px;
+  height: ${({ height }: { height: number }) => (height ? height : 20)}px;
   overflow: hidden;
   border-width: 1.5px;
   border-color: #d4d4da;

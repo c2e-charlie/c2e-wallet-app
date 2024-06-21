@@ -115,7 +115,7 @@ const Password = (props: any) => {
     if (passcode.length === 6) {
       if (passcode === serverSavedPasscode) {
         setCheckPasscode(false);
-        navigation.navigate('BottomNavigator');
+        navigation.navigate('Bottom');
       } else {
         setPasscode('');
         setCheckPasscode(true);

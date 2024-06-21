@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import DeviceInfo from 'react-native-device-info';
+import { version as appVersion } from '../../package.json';
 
 type DeviceInfoType = {
-  brand: string;
-  systemName: string;
-  systemVersion: string;
-  model: string;
-  uniqueId: string;
+  deviceName: string;
+  osType: string;
+  osVersion: string;
+  deviceModel: string;
   deviceId: string;
+  deviceType: string;
+  appVersion: string;
+  deviceUserAgent: string;
 };
 
 const useDeviceInfo = () => {
@@ -15,20 +18,23 @@ const useDeviceInfo = () => {
 
   useEffect(() => {
     const fetchDeviceInfo = async () => {
-      const brand = DeviceInfo.getBrand();
-      const systemName = DeviceInfo.getSystemName();
-      const systemVersion = DeviceInfo.getSystemVersion();
-      const model = DeviceInfo.getModel();
-      const uniqueId = await DeviceInfo.getUniqueId();
-      const deviceId = DeviceInfo.getDeviceId();
+      const deviceId = await DeviceInfo.getUniqueId();
+      const deviceType = DeviceInfo.getDeviceType();
+      const deviceName = await DeviceInfo.getDeviceName();
+      const deviceModel = DeviceInfo.getModel();
+      const deviceUserAgent = await DeviceInfo.getUserAgent();
+      const osType = DeviceInfo.getSystemName();
+      const osVersion = DeviceInfo.getSystemVersion();
 
       setDeviceInfo({
-        brand,
-        systemName,
-        systemVersion,
-        model,
-        uniqueId,
         deviceId,
+        deviceType,
+        deviceName,
+        deviceModel,
+        deviceUserAgent,
+        osType,
+        osVersion,
+        appVersion,
       });
     };
 

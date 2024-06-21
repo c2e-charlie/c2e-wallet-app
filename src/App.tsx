@@ -4,7 +4,6 @@ import 'react-native-gesture-handler';
 import Navigations from '@/navigations';
 import React, { useEffect } from 'react';
 import Toast from 'react-native-toast-message';
-import useDeviceInfo from './hooks/useDeviceInfo';
 import SplashScreen from 'react-native-splash-screen';
 import { ThemeProvider } from 'styled-components/native';
 import { SnackbarConfig } from './configs/SnackbarConfig';

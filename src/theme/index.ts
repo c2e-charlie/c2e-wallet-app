@@ -8,6 +8,12 @@ const theme = {
     disableButton: '#F0F0F3',
     disableText: '#9BA1B1',
 
+    // dark mode
+    dark: '#000',
+
+    // light mode
+    white: '#fff',
+
     // green
     c2e_green_01: '#1be0cd',
 
@@ -20,6 +26,7 @@ const theme = {
     // white
     c2e_white_01: '#FFFFFF',
     c2e_white_02: '#D4D4DA',
+    c2e_white_03: '#FFFFFF66',
 
     // black
     c2e_black_01: '#000000',

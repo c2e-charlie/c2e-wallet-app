@@ -1,10 +1,11 @@
+import { useAtom } from 'jotai';
 import React, { useRef } from 'react';
 import { View, Text, Button } from 'react-native';
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import CustomCarousel from '@/components/CustomCarousel';
 import Modal, { modalStateAtom } from '@/components/Modal';
-import { useAtom } from 'jotai';
 import BottomSheetComponent from '@/components/BottomSheet';
 import { handlePresentModalPress } from '@/components/BottomSheet/index.utils';
-import { BottomSheetModal } from '@gorhom/bottom-sheet';
 
 const Community = () => {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
@@ -22,6 +23,9 @@ const Community = () => {
       }}>
       <Text>Community</Text>
       <Button title={'Open Bottom Sheet'} onPress={handleModalPress} />
+
+      <CustomCarousel />
+
       <BottomSheetComponent ref={bottomSheetModalRef}>
         <Button onPress={() => setIsModalState(true)} title={'모달 버튼'} />
       </BottomSheetComponent>

@@ -25,10 +25,10 @@ import BalanceSettingIcon from 'public/assets/images/icons/wallet/balance_settin
 import C2EIcon from 'public/assets/images/icons/wallet/c2e_icon.png';
 import RefreshIcon from 'public/assets/images/icons/wallet/refresh_icon.png';
 import PointIcon from 'public/assets/images/icons/wallet/point_icon.png';
-// import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const Index = () => {
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
   const userName = '김둘리';
   const amount = 6.01;
 
@@ -49,7 +49,10 @@ const Index = () => {
           </RefreshTouchable>
         </BalanceMid>
         <BalanceBottom>
-          <TransactionItem>
+          <TransactionItem
+            onPress={() =>
+              navigation.navigate('WalletStack', { screen: 'Send' })
+            }>
             <TransactionItemTitle>보내기</TransactionItemTitle>
           </TransactionItem>
           <TransactionItem>

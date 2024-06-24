@@ -21,6 +21,7 @@ export const Button = styled.TouchableHighlight`
 export const ButtonText = styled.Text`
   font-size: 26px;
   color: #444447;
+  font-weight: 600;
 `;
 
 export const ArrowLeftImage = styled.Image`

@@ -38,6 +38,8 @@ const CustomButton = ({
           colors={
             disabledType2 && disabled ? ['#F0F0F3', '#F0F0F3'] : gradientColors
           }
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
           style={{
             ...styles.gradientBackground,
             borderRadius: 30,
@@ -65,7 +67,6 @@ const CustomButton = ({
           disabled={disabled}
           disabledType2={disabledType2}
           endIcon={endIcon}
-          fontWeight={fontWeight}
         />
       )}
     </ButtonContainer>

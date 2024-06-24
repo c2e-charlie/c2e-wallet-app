@@ -1,8 +1,8 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Wallet from '@/pages/Wallet';
 import React from 'react';
+import Wallet from '@/pages/Wallet';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 const WalletStack = () => {
   return (

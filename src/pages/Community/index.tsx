@@ -8,10 +8,8 @@ import BottomSheetComponent from '@/components/BottomSheet';
 import { handlePresentModalPress } from '@/components/BottomSheet/index.utils';
 import CustomButton from '@/components/CustomButton';
 import { screenWidth } from '@/utils';
-import { useNavigation } from '@react-navigation/native';
 
 const Community = () => {
-  const navigation = useNavigation();
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const [isModalState, setIsModalState] = useAtom(modalStateAtom);
   const [currentPage, setCurrentPage] = useState('community');
@@ -37,12 +35,7 @@ const Community = () => {
           <Text>drawer test</Text>
           <Button title={'Open Bottom Sheet'} onPress={handleModalPress} />
           <View style={{ width: screenWidth }}>
-            <CustomButton
-              text="Test"
-              onPress={() =>
-                navigation.navigate('Community', { screen: 'Board' })
-              }
-            />
+            <CustomButton text="Test" onPress={() => setCurrentPage('board')} />
           </View>
 
           <CustomCarousel />

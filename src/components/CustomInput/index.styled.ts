@@ -3,11 +3,13 @@ import {
   ContainerPropsType,
   InputTypeProps,
 } from '@/components/CustomInput/index.type';
+import theme from '@/theme';
+import { DefaultTheme } from 'styled-components/native';
 
 export const Container = styled.View<ContainerPropsType>`
-  padding: ${({ type }) => {
+  padding: ${({ type }: { type: string }) => {
     if (type === 'underline') {
-      return '16px 0';
+      return '12px 0';
     } else if (type === 'fill') {
       return '26px 16px';
     } else {
@@ -20,11 +22,23 @@ export const Container = styled.View<ContainerPropsType>`
   gap: 10px;
   align-items: center;
   justify-content: flex-start;
-  ${({ type, isFocused, isError }) => {
+  ${({
+    type,
+    isFocused,
+    isError,
+  }: {
+    type: string;
+    isFocused: boolean;
+    isError: boolean;
+  }) => {
     if (type === 'underline') {
       return `
         border-bottom-color: ${
-          isError ? '#EF8382' : isFocused ? '#8EB0FA' : '#D4D4DA'
+          isError
+            ? theme.colors.c2e_red_01
+            : isFocused
+            ? theme.colors.c2e_blue_02
+            : theme.colors.c2e_white_02
         };
         border-bottom-width:2px;
         background-color: #fff;
@@ -32,10 +46,20 @@ export const Container = styled.View<ContainerPropsType>`
     } else if (type === 'border') {
       return `
         border: 1.5px solid ${
-          isError ? '#EF8382' : isFocused ? '#9BA1B1' : '#E6E6E8'
+          isError
+            ? theme.colors.c2e_red_01
+            : isFocused
+            ? theme.colors.c2e_gray_02
+            : '#E6E6E8'
         };
         border-radius: 14px;
-        shadow-color: ${isError ? '#EF8382' : isFocused ? '#9BA1B1' : '#fff'};
+        shadow-color: ${
+          isError
+            ? theme.colors.c2e_red_01
+            : isFocused
+            ? theme.colors.c2e_gray_02
+            : theme.colors.textInverse
+        };
         shadow-offset: 0px 0px;
         shadow-opacity: 0.5;
         shadow-radius: 4px;
@@ -52,14 +76,14 @@ export const Container = styled.View<ContainerPropsType>`
 `;
 
 export const Input = styled.TextInput<InputTypeProps>`
-  width: ${({ type }) => {
+  width: ${({ type }: { type: string }) => {
     if (type === 'fill') {
       return '81%';
     } else {
       return '88%';
     }
   }};
-  font-size: ${({ type }) => {
+  font-size: ${({ type }: { type: string }) => {
     if (type === 'underline') {
       return '18px';
     } else if (type === 'fill') {
@@ -68,9 +92,17 @@ export const Input = styled.TextInput<InputTypeProps>`
       return '16px';
     }
   }};
-  font-weight: ${({ type }) =>
+  font-weight: ${({ type }: { type: string }) =>
     type === 'underline' ? '800' : type === 'fill' ? '600' : 'normal'};
-  color: ${({ theme, type, isError }) => {
+  color: ${({
+    theme,
+    type,
+    isError,
+  }: {
+    theme: DefaultTheme;
+    type: string;
+    isError: boolean;
+  }) => {
     if (type === 'fill' && isError) {
       return '#EF6163';
     } else {

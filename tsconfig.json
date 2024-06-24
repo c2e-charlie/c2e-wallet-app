@@ -16,6 +16,7 @@
       "@/*": ["src/*"],
       "public/*": ["public/*"]
     },
+    "types": ["@types/styled-components", "styled-components-react-native"]
   },
   "exclude": [
     "node_modules",

@@ -1,3 +1,4 @@
+import React from 'react';
 import { ButtonProps } from './index.types';
 import { ButtonContainer, styles } from './index.styled';
 import LinearGradient from 'react-native-linear-gradient';
@@ -40,6 +41,7 @@ const CustomButton = ({
           }
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{
             ...styles.gradientBackground,
             borderRadius: 30,

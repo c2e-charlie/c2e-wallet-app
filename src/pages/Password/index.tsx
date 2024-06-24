@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { PasswordStateType } from './index.types';
 import { PasswordContainer } from './index.styled';
 import { useBiometrics } from '@/hooks/useBiometrics';
 import { handlePasswordResetBtn } from './index.utils';
@@ -7,18 +8,19 @@ import PasswordContent from './_components/PasswordContent';
 import { LoginScreenNavigationProp } from '@/types/navigation';
 import PasswordForgetModal from './_components/PasswordForgetModal';
 import PasswordFailureModal from './_components/PasswordFailureModal';
+import PasswordResetSuccessModal from './_components/PasswordResetSuccessModal';
 
 const Password = (props: any) => {
   const type = props?.type || props?.route?.params?.type;
   // type : 'signup' || 'login' || 'reset'
   const serverSavedPasscode = '111111'; // 임의 값
 
-  const [password, setPassword] = useState('');
-  const [checkPassword, setCheckPassword] = useState(false);
-  const [reconfirmPassword, setReconfirmPassword] = useState('');
-  const [passcode, setPasscode] = useState('');
-  const [checkPasscode, setCheckPasscode] = useState(false);
-  const [passwordState, setPasswordState] = useState(() => {
+  const [password, setPassword] = useState<string>('');
+  const [checkPassword, setCheckPassword] = useState<boolean>(false);
+  const [reconfirmPassword, setReconfirmPassword] = useState<string>('');
+  const [passcode, setPasscode] = useState<string>('');
+  const [checkPasscode, setCheckPasscode] = useState<boolean>(false);
+  const [passwordState, setPasswordState] = useState<PasswordStateType>(() => {
     switch (type) {
       case 'signup':
         return 'PASSCODE_SIGNUP';
@@ -30,33 +32,45 @@ const Password = (props: any) => {
         return '';
     }
   });
-  const [failureCount, setFailureCount] = useState(0);
-  const [isModalState, setIsModalState] = useState(false);
-  const [passwordResetModal, setPasswordResetModal] = useState(false);
+  const [failureCount, setFailureCount] = useState<number>(0);
+  const [isModalState, setIsModalState] = useState<boolean>(false);
+  const [passwordResetModal, setPasswordResetModal] = useState<boolean>(false);
+  const [passwordResetSuccess, setPasswordResetSuccess] =
+    useState<boolean>(false);
+
+  // password reset
+  const [resetPassword, setResetPassword] = useState('');
+  const [reconfirmResetPassword, setReconfirmResetPassword] = useState('');
+
   const maxFailureCount = 5;
 
-  const { checkKey, _handleLoginBiometric, NotAvailableBiometricModal } =
-    useBiometrics();
+  const {
+    checkKey,
+    _handleLoginBiometric,
+    NotAvailableBiometricModal,
+    _handleCreateAuth,
+  } = useBiometrics();
 
   useEffect(() => {
     const checkAndLoginBiometrics = async () => {
       const keyExists = await checkKey();
-      if (keyExists) {
+      if (keyExists && type === 'login') {
         console.log('checkKey', keyExists);
-        await _handleLoginBiometric();
+
+        await _handleCreateAuth();
       }
     };
 
     checkAndLoginBiometrics();
   }, []);
 
-  // 회원가입 : SIGNUP_PASSCODE
+  // 회원가입 : PASSCODE_SIGNUP
   // 패스코드 한번 더 입력 : SIGNUP_PASSCODE_RECONFIRM
   // 패스코드 로그인 : PASSCODE_LOGIN
-  // 페이스아이디 로그인 : FACEID_LOGIN
   // 가입한 유저 비번 틀렸을때 : PASSCODE_NOT_CORRECT
   // 가입한 유저 비번 맞음 : PASSCODE_CORRECT
-  // 패스코드 재설정 : PASSCODE_RESET 작업 진행중
+  // 패스코드 재설정 : PASSCODE_RESET
+  // 패스코드 확인 : PASSCODE_RESET_RECONFIRM
 
   const navigation = useNavigation<LoginScreenNavigationProp>();
 
@@ -82,11 +96,31 @@ const Password = (props: any) => {
   }, [reconfirmPassword]);
 
   useEffect(() => {
+    if (resetPassword.length === 6) {
+      setPasswordState('PASSCODE_RESET_RECONFIRM');
+    }
+  }, [resetPassword]);
+
+  useEffect(() => {
+    if (
+      reconfirmResetPassword.length === 6 &&
+      passwordState === 'PASSCODE_RESET_RECONFIRM'
+    ) {
+      if (resetPassword === reconfirmResetPassword) {
+        setCheckPassword(false);
+        setPasswordResetSuccess(true);
+      } else {
+        setReconfirmResetPassword('');
+        setCheckPassword(true);
+      }
+    }
+  }, [reconfirmResetPassword]);
+
+  useEffect(() => {
     if (passcode.length === 6) {
       if (passcode === serverSavedPasscode) {
         setCheckPasscode(false);
-        // setPasswordState('PASSCODE_CORRECT');
-        navigation.navigate('BottomNavigator');
+        navigation.navigate('Bottom');
       } else {
         setPasscode('');
         setCheckPasscode(true);
@@ -136,11 +170,7 @@ const Password = (props: any) => {
             type={type}
             passcode={passcode}
             setPasscode={setPasscode}
-            password={password}
-            setPassword={setPassword}
             checkPassword={checkPassword}
-            reconfirmPassword={reconfirmPassword}
-            setReconfirmPassword={setReconfirmPassword}
             passwordState={passwordState}
             checkPasscode={checkPasscode}
             failureCount={failureCount}
@@ -165,16 +195,32 @@ const Password = (props: any) => {
           />
         )}
 
-        {/* <NotAvailableBiometricModal /> */}
+        <NotAvailableBiometricModal />
       </>
     );
   }
 
   if (type === 'reset') {
     return (
-      <PasswordContainer>
-        <PasswordContent />
-      </PasswordContainer>
+      <>
+        <PasswordContainer>
+          <PasswordContent
+            passwordState={passwordState}
+            resetPassword={resetPassword}
+            checkPassword={checkPassword}
+            setResetPassword={setResetPassword}
+            reconfirmResetPassword={reconfirmResetPassword}
+            setReconfirmResetPassword={setReconfirmResetPassword}
+          />
+        </PasswordContainer>
+        {passwordResetSuccess && (
+          <PasswordResetSuccessModal
+            navigation={navigation}
+            passwordResetSuccess={passwordResetSuccess}
+            setPasswordResetSuccess={setPasswordResetSuccess}
+          />
+        )}
+      </>
     );
   }
 };

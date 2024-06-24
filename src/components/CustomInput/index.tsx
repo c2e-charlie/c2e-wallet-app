@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import {
-  CustomButtonPropsType,
-  CustomInputPropsType,
-} from '@/components/CustomInput/index.type';
+import { CustomInputPropsType } from '@/components/CustomInput/index.type';
 import {
   CleanButton,
   CleanIcon,
@@ -10,14 +7,11 @@ import {
   FillButton,
   FillButtonText,
   Input,
-  Test,
 } from '@/components/CustomInput/index.styled';
 import { handleBlur, handleFocus } from '@/components/CustomInput/index.utils';
 import InputCleanIcon from 'public/assets/images/icons/CustomInput/input_clean_icon.png';
-import { Text, View } from 'react-native';
-import CustomButton from '@/components/CustomButton';
 
-const Index = ({
+const CustomInput = ({
   type = 'border',
   value = '',
   setValue = () => {},
@@ -51,4 +45,4 @@ const Index = ({
   );
 };
 
-export default Index;
+export default CustomInput;

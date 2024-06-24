@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button, Vibration } from 'react-native';
 // import RandomKeyPad from '@/components/KeyPad/RandomPad';
 import Keypad from '@/components/KeyPad/NumberPad';
 
@@ -17,6 +17,7 @@ const Quest = () => {
       <Text>{value}</Text>
       <Keypad onValueChange={setValue} />
       {/*<RandomKeyPad onValueChange={setValue} />*/}
+      <Button onPress={() => Vibration.vibrate([500])} title="버튼" />
     </View>
   );
 };

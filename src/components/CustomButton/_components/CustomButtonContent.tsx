@@ -2,6 +2,7 @@ import { Image, View } from 'react-native';
 import { ButtonProps } from '../index.types';
 import { ButtonText } from '../index.styled';
 import { button_loading } from 'public/assets/images/icons/common';
+import React from 'react';
 
 export const IconWithText = ({
   startIcon,

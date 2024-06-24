@@ -39,10 +39,14 @@ export const RandomKeyPadView = styled.View`
   align-items: center;
 `;
 
-export const PasswordAlertView = styled.View<{ checkPassword: any }>`
+export const PasswordAlertView = styled.View<{
+  checkPassword?: boolean;
+  checkPasscode?: boolean;
+}>`
   align-items: center;
   margin-top: 16px;
-  display: ${({ checkPassword }) => (checkPassword ? 'flex' : 'none')};
+  display: ${({ checkPassword, checkPasscode }) =>
+    checkPassword || checkPasscode ? 'flex' : 'none'};
 `;
 
 export const AlertText = styled.Text`

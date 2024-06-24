@@ -5,6 +5,7 @@ import {
 } from 'react-native-toast-message';
 import theme from '@/theme';
 import { View, Text } from 'react-native';
+import React from 'react';
 
 export const SnackbarConfig = {
   success: (props: any) => (

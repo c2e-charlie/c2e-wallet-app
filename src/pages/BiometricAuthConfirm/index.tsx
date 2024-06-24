@@ -9,13 +9,14 @@ import CustomButton from '@/components/CustomButton';
 import { useBiometrics } from '@/hooks/useBiometrics';
 import { useNavigation } from '@react-navigation/native';
 import { LoginScreenNavigationProp } from '@/types/navigation';
+import React from 'react';
 
 const BiometricAuthConfirm = () => {
   const { _handleCreateAuth, _handleLoginBiometric } = useBiometrics();
   const navigation = useNavigation<LoginScreenNavigationProp>();
 
   const handleNextBtn = () => {
-    navigation.navigate('BottomNavigator');
+    navigation.navigate('Bottom');
   };
 
   return (
@@ -76,6 +77,7 @@ const BiometricAuthConfirm = () => {
             color={theme.colors.c2e_white_01}
             fontWeight={800}
             onPress={_handleCreateAuth}
+            gradientColors={['#1BE0CD', '#47C8FC']}
           />
         </View>
       </View>

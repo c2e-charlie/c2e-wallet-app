@@ -1,0 +1,661 @@
+{
+  "abi": [
+    { "inputs": [], "name": "InvalidInitialization", "type": "error" },
+    { "inputs": [], "name": "NotInitializing", "type": "error" },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "owner", "type": "address" }
+      ],
+      "name": "OwnableInvalidOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "account", "type": "address" }
+      ],
+      "name": "OwnableUnauthorizedAccount",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "version",
+          "type": "uint64"
+        }
+      ],
+      "name": "Initialized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "itemId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "won",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "rewardType",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "gifticonHash",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "name": "InsertCoinResult",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "Received",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "_initVendingMachine",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_idx", "type": "uint256" },
+        {
+          "components": [
+            { "internalType": "uint256", "name": "_type", "type": "uint256" },
+            {
+              "internalType": "address",
+              "name": "contractAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "balanceOrIdx",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "gifticonHash",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct VendingFactory.DetailReward[]",
+          "name": "_detailRewards",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "addBulkRewardByIdx",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_idx", "type": "uint256" },
+        {
+          "components": [
+            { "internalType": "uint256", "name": "_type", "type": "uint256" },
+            {
+              "internalType": "address",
+              "name": "contractAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "balanceOrIdx",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "gifticonHash",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct VendingFactory.DetailReward",
+          "name": "_detailReward",
+          "type": "tuple"
+        }
+      ],
+      "name": "addRewardByIdx",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "c2eContractAddress",
+      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_price", "type": "uint256" },
+        { "internalType": "uint256", "name": "_winningRate", "type": "uint256" }
+      ],
+      "name": "createNewItem",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_idx", "type": "uint256" },
+        { "internalType": "uint256", "name": "_price", "type": "uint256" }
+      ],
+      "name": "editPriceByIdx",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "_wallet", "type": "address" }
+      ],
+      "name": "getBlackList",
+      "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "string", "name": "_hash", "type": "string" }
+      ],
+      "name": "getGifticonAllocation",
+      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "string", "name": "_hash", "type": "string" }
+      ],
+      "name": "getGifticonIsUsed",
+      "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getItemLength",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_idx", "type": "uint256" }
+      ],
+      "name": "getItemPauseStatus",
+      "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_idx", "type": "uint256" }
+      ],
+      "name": "getItemWinningRate",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getItems",
+      "outputs": [
+        {
+          "components": [
+            { "internalType": "uint256", "name": "price", "type": "uint256" },
+            { "internalType": "bool", "name": "status", "type": "bool" },
+            { "internalType": "uint256", "name": "itemIdx", "type": "uint256" },
+            {
+              "internalType": "uint256",
+              "name": "winningRate",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "lotteryNonce",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct VendingFactory.PriceItem[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getLimitTime",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_itemId", "type": "uint256" }
+      ],
+      "name": "getLotteryNonce",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getMaxCallsPerDay",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_itemId", "type": "uint256" }
+      ],
+      "name": "getRewardWeights",
+      "outputs": [
+        { "internalType": "uint256[]", "name": "", "type": "uint256[]" }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_idx", "type": "uint256" }
+      ],
+      "name": "getRewards",
+      "outputs": [
+        {
+          "components": [
+            { "internalType": "uint256", "name": "_type", "type": "uint256" },
+            {
+              "internalType": "address",
+              "name": "contractAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "balanceOrIdx",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "gifticonHash",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct VendingFactory.DetailReward[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "_wallet", "type": "address" }
+      ],
+      "name": "getWhitelist",
+      "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
+        { "internalType": "address", "name": "caller", "type": "address" }
+      ],
+      "name": "insertCoin",
+      "outputs": [
+        {
+          "components": [
+            { "internalType": "uint256", "name": "_type", "type": "uint256" },
+            {
+              "internalType": "address",
+              "name": "contractAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "balanceOrIdx",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "gifticonHash",
+              "type": "string"
+            }
+          ],
+          "internalType": "struct VendingFactory.DetailReward",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "name": "isSpecialItem",
+      "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "lotteryMaxAttempts",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_idx", "type": "uint256" }
+      ],
+      "name": "pauseItem",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "user", "type": "address" }
+      ],
+      "name": "resetCallCount",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_itemId", "type": "uint256" },
+        {
+          "internalType": "uint256",
+          "name": "_lotteryPrizeAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "resetLottery",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "", "type": "uint256" },
+        { "internalType": "uint256", "name": "", "type": "uint256" }
+      ],
+      "name": "rewardWeights",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "_wallet", "type": "address" },
+        { "internalType": "bool", "name": "status", "type": "bool" }
+      ],
+      "name": "setBlacklist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "address[]", "name": "_wallet", "type": "address[]" },
+        { "internalType": "bool", "name": "status", "type": "bool" }
+      ],
+      "name": "setBulkBlacklist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "address[]", "name": "_wallet", "type": "address[]" },
+        { "internalType": "bool", "name": "status", "type": "bool" }
+      ],
+      "name": "setBulkWhitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_c2eContractAddress",
+          "type": "address"
+        }
+      ],
+      "name": "setC2eContractAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "string", "name": "_hash", "type": "string" },
+        { "internalType": "address", "name": "_wallet", "type": "address" }
+      ],
+      "name": "setGifticonAllocation",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "string", "name": "_hash", "type": "string" },
+        { "internalType": "bool", "name": "_status", "type": "bool" }
+      ],
+      "name": "setGifticonIsUsed",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_limitTime", "type": "uint256" }
+      ],
+      "name": "setLimitTime",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_lotteryMaxAttempts",
+          "type": "uint256"
+        }
+      ],
+      "name": "setLotteryMaxAttempts",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_maxCallsPerDay",
+          "type": "uint256"
+        }
+      ],
+      "name": "setMaxCallsPerDay",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_itemId", "type": "uint256" },
+        { "internalType": "uint256[]", "name": "_weights", "type": "uint256[]" }
+      ],
+      "name": "setRewardWeights",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_itemId", "type": "uint256" },
+        { "internalType": "bool", "name": "_isSpecial", "type": "bool" }
+      ],
+      "name": "setSpecialItem",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "_wallet", "type": "address" },
+        { "internalType": "bool", "name": "status", "type": "bool" }
+      ],
+      "name": "setWhitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_idx", "type": "uint256" },
+        { "internalType": "uint256", "name": "_winningRate", "type": "uint256" }
+      ],
+      "name": "setWinningRateByIdx",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "address", "name": "newOwner", "type": "address" }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "turnOffWhitelistMode",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "turnOnWhitelistMode",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "_idx", "type": "uint256" }
+      ],
+      "name": "unpauseItem",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+      "name": "userCallData",
+      "outputs": [
+        { "internalType": "uint256", "name": "lastCallDay", "type": "uint256" },
+        { "internalType": "uint256", "name": "callCount", "type": "uint256" }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    { "stateMutability": "payable", "type": "receive" }
+  ],
+  "address": "0x015d21264737Ef0d3E6e458d61F88d0a16467287"
+}

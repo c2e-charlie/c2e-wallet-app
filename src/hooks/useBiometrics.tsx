@@ -1,9 +1,10 @@
 import theme from '@/theme';
-import { useState } from 'react';
 import Modal from '@/components/Modal';
+import React, { useState } from 'react';
 import { Alert, Image } from 'react-native';
 import styled from 'styled-components/native';
 import CustomButton from '@/components/CustomButton';
+import { DefaultTheme } from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 import { alert } from 'public/assets/images/icons/common';
 import { LoginScreenNavigationProp } from '@/types/navigation';
@@ -17,7 +18,7 @@ export const useBiometrics = () => {
   const navigation = useNavigation<LoginScreenNavigationProp>();
 
   const handleNavigateBtn = () => {
-    navigation.navigate('BottomNavigator');
+    navigation.navigate('Bottom');
   };
 
   // 생체 인식 가능 여부
@@ -41,12 +42,20 @@ export const useBiometrics = () => {
       });
   };
 
-  // 키생성
+  // 키생성, 새로운 기기 등록시에도 생체인증 재등록해서 키 쌍 등록해야함.
+  // 서버에서는 공개키 업데이트하는 api 하나 만들어야 할듯.
   const createKey = () => {
     return rnBiometrics
       .createKeys()
       .then(resultObject => {
         const { publicKey } = resultObject;
+
+        console.log('resultObject', resultObject);
+        console.log('publicKey', publicKey.length);
+
+        // 여기서 서버로 공개키 전송해야함
+        Alert.alert('공개키', `${publicKey}`);
+
         return { result: true, key: publicKey };
       })
       .catch(() => {
@@ -90,17 +99,25 @@ export const useBiometrics = () => {
   };
 
   // 값 확인
-  const biometicLogin = (userID: string = '', msg: string = '등록') => {
+  const payload = '서버에서 받은 페이로드';
+  const biometricLogin = (
+    userID: string = '',
+    msg: string = '로그인을 위해 서명 생성',
+  ) => {
     return rnBiometrics
       .createSignature({
+        // createSignature 함수가 비공개 키 사용해서 payload에 서명을 생성함.
         promptMessage: msg,
-        payload: userID,
+        // payload: userID,
+        payload: payload,
       })
       .then(resultObject => {
         const { success, signature } = resultObject;
         if (success) {
+          // 생성된 서명을 서버로 전송
           return { result: true, key: signature };
         } else {
+          // 서명 생성 실패
           return { result: false, key: null };
         }
       })
@@ -112,24 +129,23 @@ export const useBiometrics = () => {
 
   const _handleCreateAuth = async () => {
     // const token = await messaging().getToken()
-    const token = 'test123';
     const keyCreate = await createKey();
     if (keyCreate?.result) {
       const biometricCheck = await booleanBiometricCheck();
       if (biometricCheck?.result) {
-        const bioKey = await biometicLogin('test123', '등록');
+        const bioKey = await biometricLogin('test123', '등록');
 
         if (bioKey?.key) {
-          Alert.alert(
-            '',
-            `생체인증이 성공적으로 등록되었습니다. ${bioKey?.key}`,
-            [
-              {
-                text: '확인',
-                onPress: handleNavigateBtn,
-              },
-            ],
-          );
+          // Alert.alert(
+          //   '',
+          //   `생체인증이 성공적으로 등록되었습니다. ${bioKey?.key}`,
+          //   [
+          //     {
+          //       text: '확인',
+          //       onPress: handleNavigateBtn,
+          //     },
+          //   ],
+          // );
         } else {
           Alert.alert('알림', '생체인식 사용불가 또는 등록되어있지 않음.');
         }
@@ -146,14 +162,12 @@ export const useBiometrics = () => {
     console.log('biometricCheck', biometricCheck);
     if (biometricCheck?.result) {
       try {
-        const bioKey = await biometicLogin('test123', '로그인');
+        const bioKey = await biometricLogin('test123', '로그인');
         if (bioKey?.result) {
           return handleNavigateBtn();
         }
         setIsModalState(true);
       } catch (error) {}
-    } else {
-      setIsModalState(true);
     }
   };
 
@@ -198,7 +212,7 @@ const ModalTitle = styled.Text`
   margin: 14px 0 14px 0;
   font-size: 16px;
   line-height: 22px;
-  color: ${({ theme }) => theme.colors.c2e_gray_01};
+  color: ${({ theme }: { theme: DefaultTheme }) => theme.colors.c2e_gray_01};
   font-weight: 500;
 `;
 
@@ -206,7 +220,7 @@ const ModalDescription = styled.Text`
   margin: 0 59px 0 59px;
   margin-bottom: 26px;
   font-size: 14px;
-  color: ${({ theme }) => theme.colors.c2e_gray_01};
+  color: ${({ theme }: { theme: DefaultTheme }) => theme.colors.c2e_gray_01};
   text-align: center;
   line-height: 20px;
 `;

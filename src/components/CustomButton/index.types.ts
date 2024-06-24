@@ -1,4 +1,5 @@
 import { ImageSourcePropType } from 'react-native';
+import { DefaultTheme } from 'styled-components/native';
 
 export type ButtonProps = {
   onPress?: () => void;
@@ -18,3 +19,11 @@ export type ButtonProps = {
   gradientColors?: string[];
   fontWeight?: any;
 };
+
+export interface ButtonContainerStyledProps extends ButtonProps {
+  theme: DefaultTheme;
+  disabled: boolean;
+  gradientColors: string[];
+  backgroundColor: string;
+  disabledType2: boolean;
+}

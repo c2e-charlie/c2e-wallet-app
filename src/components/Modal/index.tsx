@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-native-modal';
-import { Button, View } from 'react-native';
+import { View } from 'react-native';
 import { atom } from 'jotai';
 import { ModalProps } from '@/components/Modal/index.type';
 

@@ -2,28 +2,36 @@ import React from 'react';
 import Home from '../pages/Home';
 import Quest from '../pages/Quest';
 import Wallet from '../pages/Wallet';
-import Community from '../pages/Community';
 import VendingMachine from '../pages/VendingMachine';
 import CustomBottom from '../components/CustomBottom';
+import { Image, TouchableOpacity } from 'react-native';
+import CommunityStack from './Community/CommunityStack';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { hamburger_button } from 'public/assets/images/icons/navigation';
 
 const Tab = createBottomTabNavigator();
 const Bottom = () => {
+  const navigation = useNavigation();
+
   return (
     <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarStyle: {},
-      }}
+      screenOptions={({ route }) => ({
+        headerShown: route.name === 'Community',
+        headerTitle: '',
+        headerLeft: () => null,
+        headerRight: () =>
+          route.name === 'Community' ? (
+            <TouchableOpacity
+              onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+              <Image source={hamburger_button} style={{ marginRight: 20 }} />
+            </TouchableOpacity>
+          ) : null,
+        tabBar: (props: any) => <CustomBottom {...props} />,
+      })}
       tabBar={props => <CustomBottom {...props} />}
       initialRouteName="Home">
-      <Tab.Screen
-        options={{
-          tabBarLabel: '커뮤니티',
-        }}
-        name="Community"
-        component={Community}
-      />
+      <Tab.Screen name="Community" component={CommunityStack} />
       <Tab.Screen
         options={{
           tabBarLabel: '퀘스트',

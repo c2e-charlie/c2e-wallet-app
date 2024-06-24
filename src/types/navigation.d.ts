@@ -10,6 +10,7 @@ export type RootStackParamList = {
   TermsAndUse: undefined;
   PasswordReset: undefined;
   Bottom: undefined;
+  Drawer: undefined;
 };
 
 export type LoginScreenNavigationProp = StackNavigationProp<

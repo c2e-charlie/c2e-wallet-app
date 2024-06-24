@@ -1,8 +1,8 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Quest from '@/pages/Quest';
 import React from 'react';
+import Quest from '@/pages/Quest';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 const QuestStack = () => {
   return (

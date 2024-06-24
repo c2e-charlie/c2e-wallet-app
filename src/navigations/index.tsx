@@ -6,20 +6,22 @@ import Wallet from '@/navigations/Wallet/WalletStack';
 import Community from '@/navigations/Community/CommunityStack';
 import VendingMachine from '@/navigations/VendingMachine/VendingStack';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Drawer from './Drawer';
 
 const Nav = createNativeStackNavigator();
 
 const Index = () => {
   return (
     <Nav.Navigator
-      initialRouteName="Login"
+      initialRouteName="Bottomr"
       screenOptions={{ headerShown: false }}>
       <Nav.Screen name="Login" component={Login} />
-      <Nav.Screen name="Bottom" component={Bottom} />
+      <Nav.Screen name="Drawer" component={Drawer} />
+      {/* <Nav.Screen name="Bottom" component={Bottom} />
       <Nav.Screen name="Community" component={Community} />
       <Nav.Screen name="Quest" component={Quest} />
       <Nav.Screen name="Wallet" component={Wallet} />
-      <Nav.Screen name="VendingMachine" component={VendingMachine} />
+      <Nav.Screen name="VendingMachine" component={VendingMachine} /> */}
     </Nav.Navigator>
   );
 };

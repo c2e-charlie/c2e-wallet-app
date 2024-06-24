@@ -5,25 +5,24 @@ import Wallet from '../pages/Wallet';
 import Community from '../pages/Community';
 import VendingMachine from '../pages/VendingMachine';
 import CustomBottom from '../components/CustomBottom';
+import { Image, TouchableOpacity } from 'react-native';
+import { useNavigation, DrawerActions } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { hamburger_button } from 'public/assets/images/icons/navigation';
+import CommunityStack from './Community/CommunityStack';
 
 const Tab = createBottomTabNavigator();
 const Bottom = () => {
+  const navigation = useNavigation();
+
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {},
       }}
       tabBar={props => <CustomBottom {...props} />}
       initialRouteName="Home">
-      <Tab.Screen
-        options={{
-          tabBarLabel: '커뮤니티',
-        }}
-        name="Community"
-        component={Community}
-      />
+      <Tab.Screen name="Community" component={CommunityStack} />
       <Tab.Screen
         options={{
           tabBarLabel: '퀘스트',

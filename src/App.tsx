@@ -29,7 +29,7 @@ function App(): React.JSX.Element {
     <ThemeProvider theme={theme}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <BottomSheetModalProvider>
-          <SafeAreaView style={backgroundStyle}>
+          <View style={backgroundStyle}>
             <StatusBar
               barStyle={isDarkMode ? 'light-content' : 'dark-content'}
               backgroundColor={backgroundStyle.backgroundColor}
@@ -40,7 +40,7 @@ function App(): React.JSX.Element {
             <View style={{ marginHorizontal: 0 }}>
               <Toast config={SnackbarConfig} />
             </View>
-          </SafeAreaView>
+          </View>
         </BottomSheetModalProvider>
       </GestureHandlerRootView>
     </ThemeProvider>

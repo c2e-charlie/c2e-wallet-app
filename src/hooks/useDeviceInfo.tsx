@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DeviceInfo from 'react-native-device-info';
 import { version as appVersion } from '../../package.json';
 

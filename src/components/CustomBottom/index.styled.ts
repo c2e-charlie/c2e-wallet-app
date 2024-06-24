@@ -12,10 +12,10 @@ export const TabBarContainer = styled.View`
 `;
 
 export const TabIcon = styled.Image<{ isHome: boolean }>`
-  width: ${props => (props.isHome ? 50 : 24)}px;
-  height: ${props => (props.isHome ? 50 : 24)}px;
+  width: ${(props: any) => (props.isHome ? 50 : 24)}px;
+  height: ${(props: any) => (props.isHome ? 50 : 24)}px;
   margin-bottom: 5px;
-  margin-top: ${props => (props.isHome ? 0 : 9)}px;
+  margin-top: ${(props: any) => (props.isHome ? 0 : 9)}px;
 `;
 
 export const StyledSvg = styled(Svg)`
@@ -39,7 +39,7 @@ export const CustomTabBar = styled.View<{ height: number }>`
   top: -20px;
   left: 0px;
   right: 0px;
-  height: ${props => props.height + 20}px;
+  height: ${(props: any) => props.height + 20}px;
 `;
 
 export const styles = StyleSheet.create({

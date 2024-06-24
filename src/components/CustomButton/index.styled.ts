@@ -1,23 +1,16 @@
 import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
+import { ButtonContainerStyledProps, ButtonProps } from './index.types';
+import { DefaultTheme } from 'styled-components/native';
 
-export const ButtonContainer = styled.TouchableOpacity<{
-  backgroundColor?: string;
-  borderRadius?: number;
-  opacity?: number;
-  borderWidth?: number;
-  borderColor?: string;
-  fullWidth?: boolean;
-  disabledType2?: boolean;
-  gradientColors?: string[];
-}>`
+export const ButtonContainer = styled.TouchableOpacity<ButtonProps>`
   background-color: ${({
     theme,
     disabled,
     gradientColors = [],
     backgroundColor,
     disabledType2,
-  }) =>
+  }: ButtonContainerStyledProps) =>
     gradientColors && gradientColors?.length > 0
       ? 'transparent'
       : disabledType2 && disabled
@@ -26,12 +19,20 @@ export const ButtonContainer = styled.TouchableOpacity<{
   border-radius: 30px;
   align-items: center;
   justify-content: center;
-  width: ${({ fullWidth }) => (fullWidth ? '100%' : 'auto')};
+  width: ${({ fullWidth }: { fullWidth: string }) =>
+    fullWidth ? '100%' : 'auto'};
   height: 60px;
-  border-width: ${({ borderWidth }) => borderWidth || 0}px;
-  border-color: ${({ borderColor }) => borderColor || 'white'};
-  opacity: ${({ disabled, disabledType2 }) =>
-    disabledType2 ? 1 : disabled ? 0.3 : 1};
+  border-width: ${({ borderWidth }: { borderWidth: number }) =>
+    borderWidth || 0}px;
+  border-color: ${({ borderColor }: { borderColor: string }) =>
+    borderColor || 'white'};
+  opacity: ${({
+    disabled,
+    disabledType2,
+  }: {
+    disabled: boolean;
+    disabledType2: boolean;
+  }) => (disabledType2 ? 1 : disabled ? 0.3 : 1)};
 `;
 
 export const ButtonText = styled.Text<{
@@ -39,12 +40,23 @@ export const ButtonText = styled.Text<{
   disabledType2?: boolean;
   fontWeight?: any;
 }>`
-  color: ${({ theme, color, disabledType2, disabled }) =>
+  color: ${({
+    theme,
+    color,
+    disabledType2,
+    disabled,
+  }: {
+    theme: DefaultTheme;
+    color: string;
+    disabled: boolean;
+    disabledType2: boolean;
+  }) =>
     disabledType2 && disabled
       ? theme.colors.disableText
       : color || theme.colors.textInverse};
-  font-size: ${({ theme }) => theme.fontSize.medium}px;
-  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : 'normal')};
+  font-size: ${({ theme }: { theme: DefaultTheme }) => theme.fontSize.medium}px;
+  font-weight: ${({ fontWeight }: { fontWeight: string }) =>
+    fontWeight ? fontWeight : 'normal'};
 `;
 
 export const styles = StyleSheet.create({

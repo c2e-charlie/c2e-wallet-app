@@ -5,9 +5,6 @@ import {
   Container,
   Content,
   DeleteButton,
-  EmptyComponent,
-  EmptyImage,
-  EmptyText,
   HistoryContainer,
   HistoryHeader,
   HistoryItem,
@@ -32,9 +29,9 @@ import { handlePresentModalPress } from '@/components/BottomSheet/index.utils';
 import BottomSheetComponent from '@/components/BottomSheet';
 import SendModal from '@/pages/SendAdress/_component/SendModal';
 import { useNavigation } from '@react-navigation/native';
-import EmptyIcon from 'public/assets/images/icons/wallet/empty_icon.png';
 import CloseIcon from 'public/assets/images/icons/wallet/close_icon.png';
 import { checkAddress, isDeleteActive } from '@/pages/SendAdress/index.utils';
+import Empty from '@/components/Empty';
 
 const Index = () => {
   const navigation = useNavigation();
@@ -69,12 +66,7 @@ const Index = () => {
           </HistoryHeader>
           <HistoryContainer
             data={addressList}
-            ListEmptyComponent={
-              <EmptyComponent>
-                <EmptyImage source={EmptyIcon} />
-                <EmptyText>최근 내역이 존재하지 않습니다</EmptyText>
-              </EmptyComponent>
-            }
+            ListEmptyComponent={<Empty />}
             renderItem={({ item }: ListRenderItemInfo<AddressItemType>) => {
               return (
                 <HistoryItem>

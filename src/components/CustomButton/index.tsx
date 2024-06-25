@@ -21,6 +21,7 @@ const CustomButton = ({
   backgroundColor,
   disabledType2,
   fontWeight,
+  height = 60,
 }: ButtonProps) => {
   return (
     <ButtonContainer
@@ -33,7 +34,8 @@ const CustomButton = ({
       fullWidth={fullWidth}
       style={shadow ? styles.customButtonShadow : {}}
       disabledType2={disabledType2}
-      activeOpacity={0.5}>
+      activeOpacity={0.5}
+      height={height}>
       {gradientColors && gradientColors.length > 0 ? (
         <LinearGradient
           colors={

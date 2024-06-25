@@ -15,8 +15,10 @@ import {
 } from '@/pages/Wallet/_components/PanelSection/index.styled';
 import BfcIcon from 'public/assets/images/icons/wallet/bfc_icon.png';
 import UsdtIcon from 'public/assets/images/icons/wallet/usdt_icon.png';
+import { useNavigation } from '@react-navigation/native';
 
 const Index = () => {
+  const naivgation = useNavigation();
   const [activeTab, setActiveTab] = React.useState('토큰');
   const tabList = ['토큰', 'NFT'];
   const tokenList = [
@@ -49,7 +51,11 @@ const Index = () => {
       <TabBottomView>
         {tokenList.map((tokenInfoItem, key) => {
           return (
-            <TokenItem key={key}>
+            <TokenItem
+              onPress={() =>
+                naivgation.navigate('WalletStack', { screen: 'TokenDetail' })
+              }
+              key={key}>
               <TokenLeft>
                 <TokenImage source={tokenInfoItem.icon} />
                 <TokenName>{tokenInfoItem.symbol}</TokenName>

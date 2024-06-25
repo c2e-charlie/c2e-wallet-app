@@ -44,7 +44,7 @@ export const TabBottomView = styled.View`
   border-bottom-right-radius: 26px;
 `;
 
-export const TokenItem = styled.View`
+export const TokenItem = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   justify-content: space-between;

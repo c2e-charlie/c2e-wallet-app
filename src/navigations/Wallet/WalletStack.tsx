@@ -5,6 +5,7 @@ import Send from '@/pages/Send';
 import SendAdress from '@/pages/SendAdress';
 import Confirm from '@/pages/Confirm';
 import QrScanner from '@/pages/QrScanner';
+import QrAddress from '@/pages/QrAddress';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ const WalletStack = () => {
       <Stack.Screen name="SendAdress" component={SendAdress} />
       <Stack.Screen name="Confirm" component={Confirm} />
       <Stack.Screen name="QrScanner" component={QrScanner} />
+      <Stack.Screen name="QrAddress" component={QrAddress} />
     </Stack.Navigator>
   );
 };

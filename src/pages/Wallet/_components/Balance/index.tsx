@@ -55,7 +55,10 @@ const Index = () => {
             }>
             <TransactionItemTitle>보내기</TransactionItemTitle>
           </TransactionItem>
-          <TransactionItem>
+          <TransactionItem
+            onPress={() =>
+              navigation.navigate('WalletStack', { screen: 'QrAddress' })
+            }>
             <TransactionItemTitle>받기</TransactionItemTitle>
           </TransactionItem>
           <SwapItem>

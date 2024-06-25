@@ -12,6 +12,15 @@ export const MainContent = styled.View`
   padding: 30px 20px 0;
 `;
 
+export const HistoryHeader = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const DeleteButton = styled.TouchableOpacity``;
+
 export const HistoryText = styled.Text`
   margin-top: 40px;
   font-size: 14px;
@@ -74,11 +83,31 @@ export const NextButton = styled.View`
 `;
 
 export const ButtonList = styled.View`
-  padding: 0 20px 20px;
+  padding: 0 20px 5px;
   width: 100%;
   display: flex;
   align-self: flex-end;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+`;
+
+export const EmptyComponent = styled.View`
+  margin-top: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const EmptyImage = styled.Image`
+  margin-bottom: 26px;
+  width: 60px;
+  height: 40px;
+`;
+
+export const EmptyText = styled.Text`
+  font-size: 14px;
+  color: #a8adbb;
+  font-weight: 600;
 `;

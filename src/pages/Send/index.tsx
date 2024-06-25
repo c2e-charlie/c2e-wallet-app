@@ -14,7 +14,6 @@ import NumberPad from '@/components/KeyPad/NumberPad';
 import Header from '@/components/Header';
 import CustomButton from '@/components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
-// import navigations from '@/navigations';
 
 const Index = () => {
   const navigation = useNavigation();

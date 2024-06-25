@@ -2,9 +2,8 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   padding: 40px 20px 20px;
-  //background-color: #222;
-  //justify-content: center;
   display: flex;
+  height: 100%;
   justify-content: space-between;
   align-items: center;
 `;
@@ -53,17 +52,44 @@ export const InfoValue = styled.Text`
   text-align: right;
   width: 50%;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 700;
   color: #444447;
 `;
 
 export const ButtonList = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  padding: 0 0 20px;
   width: 100%;
+  display: flex;
+  align-self: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
 `;
 
-export const CancelButton = styled.View``;
+export const CancelButton = styled.View`
+  padding: 21px 0;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f3;
+  border-radius: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
 
-export const ConfirmButton = styled.View``;
+export const CancelText = styled.Text`
+  font-size: 16px;
+  color: #9ba1b1;
+  font-weight: 700;
+`;
+
+export const ConfirmButton = styled.View`
+  width: 57%;
+  display: flex;
+  align-items: center;
+`;
+
+export const ConfirmText = styled.Text`
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 700;
+`;

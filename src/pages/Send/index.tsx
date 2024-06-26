@@ -37,7 +37,7 @@ const Index = () => {
       <NumberPad onValueChange={setQuantity} />
       <ButtonContainer>
         <CustomButton
-          onPress={() => navigation.navigate('SendAdress')}
+          onPress={() => navigation.navigate('SendAddress')}
           fullWidth
           text={'다음'}
           gradientColors={['#1BE0CD', '#47C8FC']}

@@ -15,23 +15,23 @@ import {
   QrCodeImage,
   StarButton,
   StarImage,
-} from '@/pages/SendAdress/index.styled';
+} from '@/pages/SendAddress/index.styled';
 import Header from '@/components/Header';
 import CustomInput from '@/components/CustomInput';
 import DoneStarIcon from 'public/assets/images/icons/wallet/done_star_icon.png';
 import StarIcon from 'public/assets/images/icons/wallet/star_icon.png';
-import { AddressItemType } from '@/pages/SendAdress/index.type';
+import { AddressItemType } from '@/pages/SendAddress/index.type';
 import { ListRenderItemInfo } from 'react-native';
 import CustomButton from '@/components/CustomButton';
 import QrIcon from 'public/assets/images/icons/wallet/qr_icon.png';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 import { handlePresentModalPress } from '@/components/BottomSheet/index.utils';
 import BottomSheetComponent from '@/components/BottomSheet';
-import SendModal from '@/pages/SendAdress/_component/SendModal';
+import SendModal from '@/pages/SendAddress/_component/SendModal';
 import { useNavigation } from '@react-navigation/native';
 import CloseIcon from 'public/assets/images/icons/wallet/close_icon.png';
-import { checkAddress, isDeleteActive } from '@/pages/SendAdress/index.utils';
 import Empty from '@/components/Empty';
+import { checkAddress, isDeleteActive } from '@/pages/SendAddress/index.utils';
 
 const Index = () => {
   const navigation = useNavigation();

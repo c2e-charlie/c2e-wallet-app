@@ -8,21 +8,13 @@ import {
   ButtonContainer,
   HistoryContainer,
   HistoryList,
-  ListItem,
-  ListLeft,
-  ListIcon,
-  ListInfo,
-  InfoText,
-  StateText,
-  ListRightText,
 } from '@/pages/TokenDetail/index.styled';
 import Header from '@/components/Header';
 import CustomButton from '@/components/CustomButton';
-import { HistoryText } from '@/pages/SendAdress/index.styled';
+import { HistoryText } from '@/pages/SendAddress/index.styled';
 import Empty from '@/components/Empty';
-import WithdrawIcon from 'public/assets/images/icons/wallet/withdraw_icon.png';
-import DepositIcon from 'public/assets/images/icons/wallet/deposit_icon.png';
 import { useNavigation } from '@react-navigation/native';
+import HistoryItem from '@/components/HistoryItem';
 
 const Index = () => {
   const navigation = useNavigation();
@@ -70,26 +62,7 @@ const Index = () => {
           data={demoData}
           ListEmptyComponent={<Empty />}
           renderItem={({ item }) => {
-            return (
-              <ListItem>
-                <ListLeft>
-                  <ListIcon
-                    source={
-                      item.type === 'deposit' ? DepositIcon : WithdrawIcon
-                    }
-                  />
-                  <ListInfo>
-                    <InfoText>
-                      {item.type === 'deposit' ? '받기' : '보내기'}
-                    </InfoText>
-                    <StateText>
-                      {item.state === 'SUCCESS' ? '성공' : '실패'}
-                    </StateText>
-                  </ListInfo>
-                </ListLeft>
-                <ListRightText>{item.amount}</ListRightText>
-              </ListItem>
-            );
+            return <HistoryItem TokenInfo={item} />;
           }}
         />
       </HistoryContainer>
@@ -100,58 +73,58 @@ const Index = () => {
 export default Index;
 
 const demoData = [
-  {
-    state: 'SUCCESS',
-    amount: '0.1234',
-    date: '2021-09-01',
-    type: 'deposit', // 받기
-  },
-  {
-    state: 'FAIL',
-    amount: '0.1234',
-    date: '2021-09-01',
-    type: 'withdraw', // 보내기
-  },
-  {
-    state: 'PENDING',
-    amount: '0.1234',
-    date: '2021-09-01',
-    type: 'withdraw', // 보내기
-  },
-  {
-    state: 'SUCCESS',
-    amount: '0.1234',
-    date: '2021-09-01',
-    type: 'deposit', // 받기
-  },
-  {
-    state: 'FAIL',
-    amount: '0.1234',
-    date: '2021-09-01',
-    type: 'withdraw', // 보내기
-  },
-  {
-    state: 'PENDING',
-    amount: '0.1234',
-    date: '2021-09-01',
-    type: 'withdraw', // 보내기
-  },
-  {
-    state: 'SUCCESS',
-    amount: '0.1234',
-    date: '2021-09-01',
-    type: 'deposit', // 받기
-  },
-  {
-    state: 'FAIL',
-    amount: '0.1234',
-    date: '2021-09-01',
-    type: 'withdraw', // 보내기
-  },
-  {
-    state: 'PENDING',
-    amount: '0.1234',
-    date: '2021-09-01',
-    type: 'withdraw', // 보내기
-  },
+  // {
+  //   state: 'SUCCESS',
+  //   amount: '0.1234',
+  //   date: '2021-09-01',
+  //   type: 'deposit', // 받기
+  // },
+  // {
+  //   state: 'FAIL',
+  //   amount: '0.1234',
+  //   date: '2021-09-01',
+  //   type: 'withdraw', // 보내기
+  // },
+  // {
+  //   state: 'PENDING',
+  //   amount: '0.1234',
+  //   date: '2021-09-01',
+  //   type: 'withdraw', // 보내기
+  // },
+  // {
+  //   state: 'SUCCESS',
+  //   amount: '0.1234',
+  //   date: '2021-09-01',
+  //   type: 'deposit', // 받기
+  // },
+  // {
+  //   state: 'FAIL',
+  //   amount: '0.1234',
+  //   date: '2021-09-01',
+  //   type: 'withdraw', // 보내기
+  // },
+  // {
+  //   state: 'PENDING',
+  //   amount: '0.1234',
+  //   date: '2021-09-01',
+  //   type: 'withdraw', // 보내기
+  // },
+  // {
+  //   state: 'SUCCESS',
+  //   amount: '0.1234',
+  //   date: '2021-09-01',
+  //   type: 'deposit', // 받기
+  // },
+  // {
+  //   state: 'FAIL',
+  //   amount: '0.1234',
+  //   date: '2021-09-01',
+  //   type: 'withdraw', // 보내기
+  // },
+  // {
+  //   state: 'PENDING',
+  //   amount: '0.1234',
+  //   date: '2021-09-01',
+  //   type: 'withdraw', // 보내기
+  // },
 ];

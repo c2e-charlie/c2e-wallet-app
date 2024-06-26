@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import theme from './theme';
 import 'react-native-gesture-handler';
 import Navigations from '@/navigations';

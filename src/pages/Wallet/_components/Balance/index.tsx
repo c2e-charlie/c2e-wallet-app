@@ -27,7 +27,7 @@ import RefreshIcon from 'public/assets/images/icons/wallet/refresh_icon.png';
 import PointIcon from 'public/assets/images/icons/wallet/point_icon.png';
 import { useNavigation } from '@react-navigation/native';
 
-const Index = () => {
+const Index = ({ handleModalPress }: { handleModalPress: () => void }) => {
   const navigation = useNavigation();
   const userName = '김둘리';
   const amount = 6.01;
@@ -37,7 +37,7 @@ const Index = () => {
       <Balance>
         <BalanceTop>
           <BalanceTitle>{userName}</BalanceTitle>
-          <BalanceSettingTouchable>
+          <BalanceSettingTouchable onPress={handleModalPress}>
             <BalanceSettingImage source={BalanceSettingIcon} />
           </BalanceSettingTouchable>
         </BalanceTop>

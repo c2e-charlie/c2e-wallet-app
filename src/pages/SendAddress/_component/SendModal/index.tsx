@@ -12,7 +12,7 @@ import {
   MainContent,
   SendAmount,
   SendTokenIcon,
-} from '@/pages/SendAdress/_component/SendModal/index.styled';
+} from '@/pages/SendAddress/_component/SendModal/index.styled';
 import CustomButton from '@/components/CustomButton';
 import { goToConfirm } from '@/pages/Confirm/index.utils';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
@@ -21,7 +21,7 @@ const Index = ({
   navigation,
   bottomSheetModalRef,
 }: {
-  navigation: any;
+  navigation?: any;
   bottomSheetModalRef: RefObject<BottomSheetModal>;
 }) => {
   return (

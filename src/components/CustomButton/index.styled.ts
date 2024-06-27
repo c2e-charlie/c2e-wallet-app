@@ -21,7 +21,7 @@ export const ButtonContainer = styled.TouchableOpacity<ButtonProps>`
   justify-content: center;
   width: ${({ fullWidth }: { fullWidth: string }) =>
     fullWidth ? '100%' : 'auto'};
-  height: 60px;
+  height: ${({ height }: { height: number }) => `${height}px`};
   border-width: ${({ borderWidth }: { borderWidth: number }) =>
     borderWidth || 0}px;
   border-color: ${({ borderColor }: { borderColor: string }) =>

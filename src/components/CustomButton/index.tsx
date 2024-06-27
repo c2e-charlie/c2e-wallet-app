@@ -21,6 +21,7 @@ const CustomButton = ({
   backgroundColor,
   disabledType2,
   fontWeight,
+  height = 60,
 }: ButtonProps) => {
   return (
     <ButtonContainer
@@ -33,12 +34,15 @@ const CustomButton = ({
       fullWidth={fullWidth}
       style={shadow ? styles.customButtonShadow : {}}
       disabledType2={disabledType2}
-      activeOpacity={0.5}>
+      activeOpacity={0.5}
+      height={height}>
       {gradientColors && gradientColors.length > 0 ? (
         <LinearGradient
           colors={
             disabledType2 && disabled ? ['#F0F0F3', '#F0F0F3'] : gradientColors
           }
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
           // eslint-disable-next-line react-native/no-inline-styles
           style={{
             ...styles.gradientBackground,

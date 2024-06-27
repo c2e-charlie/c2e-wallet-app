@@ -75,10 +75,15 @@ export const Container = styled.View<ContainerPropsType>`
   }}
 `;
 
-export const Input = styled.TextInput<InputTypeProps>`
+export const Input = styled.TextInput.attrs<InputTypeProps>(() => ({
+  placeholderTextColor: '#A8ADBB',
+}))`
+  ::placeholder {
+    color: red;
+  }
   width: ${({ type }: { type: string }) => {
     if (type === 'fill') {
-      return '81%';
+      return '75%';
     } else {
       return '88%';
     }

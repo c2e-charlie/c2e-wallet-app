@@ -18,6 +18,7 @@ export type ButtonProps = {
   disabledType2?: boolean;
   gradientColors?: string[];
   fontWeight?: any;
+  height?: number;
 };
 
 export interface ButtonContainerStyledProps extends ButtonProps {

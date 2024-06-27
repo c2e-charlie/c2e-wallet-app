@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import theme from './theme';
 import 'react-native-gesture-handler';
 import Navigations from '@/navigations';
@@ -11,7 +10,7 @@ import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { SafeAreaView, StatusBar, useColorScheme, View } from 'react-native';
+import { StatusBar, useColorScheme, View } from 'react-native';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -29,7 +28,7 @@ function App(): React.JSX.Element {
     <ThemeProvider theme={theme}>
       <GestureHandlerRootView style={{ flex: 1 }}>
         <BottomSheetModalProvider>
-          <SafeAreaView style={backgroundStyle}>
+          <View style={backgroundStyle}>
             <StatusBar
               barStyle={isDarkMode ? 'light-content' : 'dark-content'}
               backgroundColor={backgroundStyle.backgroundColor}
@@ -40,7 +39,7 @@ function App(): React.JSX.Element {
             <View style={{ marginHorizontal: 0 }}>
               <Toast config={SnackbarConfig} />
             </View>
-          </SafeAreaView>
+          </View>
         </BottomSheetModalProvider>
       </GestureHandlerRootView>
     </ThemeProvider>

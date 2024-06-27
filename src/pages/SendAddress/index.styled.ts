@@ -43,10 +43,13 @@ export const HistoryItem = styled.View`
   align-items: center;
 `;
 
-export const AddressText = styled.Text`
+export const AddressTouchable = styled.TouchableOpacity`
   width: 70%;
+`;
+
+export const AddressText = styled.Text`
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   color: #444447;
 `;
 

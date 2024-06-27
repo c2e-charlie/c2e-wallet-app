@@ -18,7 +18,6 @@ export const Title = styled.Text`
   font-size: 16px;
   font-weight: 500;
   color: #fff;
-  text-align: center;
 `;
 
 export const ScanContainer = styled.View`

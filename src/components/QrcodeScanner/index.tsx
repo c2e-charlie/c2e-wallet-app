@@ -4,17 +4,23 @@ import {
   useCameraDevice,
 } from 'react-native-vision-camera';
 import Loading from '../Loading';
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '@/navigations/index.type';
 
-const QrcodeScanner = () => {
-  const [qrCodeInfo, setQrcodeInfo] = useState<string>('');
+const QrcodeScanner = ({ quantity }: { quantity: string }) => {
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const device = useCameraDevice('back');
   const codeScanner = useCodeScanner({
     codeTypes: ['qr', 'ean-13'],
     onCodeScanned: (codes: any) => {
-      console.log(`Scanned ${codes[0].value} codes!`);
-      setQrcodeInfo(codes[0].value);
+      console.log('codes: ', codes[0].value);
+      navigation.navigate('WalletStack', {
+        screen: 'SendAddress',
+        params: { quantity: quantity, qrScanAddress: codes[0].value },
+      });
     },
   });
 

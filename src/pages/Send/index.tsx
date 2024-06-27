@@ -16,10 +16,11 @@ import CustomButton from '@/components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '@/navigations/index.type';
+import { maxQuantity } from '@/pages/Send/index.utils';
 
 const Index = () => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
-  const [quantity, setQuantity] = useState('');
+  const [quantity, setQuantity] = useState<string>('');
 
   return (
     <Container>
@@ -31,8 +32,8 @@ const Index = () => {
           </QuantityText>
           <C2EText>C2E</C2EText>
         </C2EContainer>
-        <BalanceText>잔액 1C2E</BalanceText>
-        <MaxButton>
+        <BalanceText>잔액 {myC2e}C2E</BalanceText>
+        <MaxButton onPress={() => maxQuantity(setQuantity, myC2e)}>
           <ButtonText>MAX</ButtonText>
         </MaxButton>
       </QuantityContainer>
@@ -40,9 +41,13 @@ const Index = () => {
       <ButtonContainer>
         <CustomButton
           onPress={() =>
-            navigation.navigate('WalletStack', { screen: 'SendAddress' })
+            navigation.navigate('WalletStack', {
+              screen: 'SendAddress',
+              params: { quantity: quantity },
+            })
           }
           fullWidth
+          disabled={quantity === ''}
           text={'다음'}
           gradientColors={['#1BE0CD', '#47C8FC']}
         />
@@ -52,3 +57,5 @@ const Index = () => {
 };
 
 export default Index;
+
+const myC2e = '1';

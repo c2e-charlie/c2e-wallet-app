@@ -12,6 +12,8 @@ export const ArrowTouchable = styled.TouchableOpacity`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 45%;
+  height: 48px;
 `;
 
 export const ArrowLeftImage = styled.Image`
@@ -27,5 +29,5 @@ export const Title = styled.Text`
   font-size: 16px;
   font-weight: 800;
   color: #333333;
-  text-align: center;
+  //text-align: center;
 `;

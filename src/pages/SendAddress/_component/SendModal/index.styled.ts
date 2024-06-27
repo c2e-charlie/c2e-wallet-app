@@ -23,7 +23,7 @@ export const SendTokenIcon = styled.Image`
 export const SendAmount = styled.Text`
   margin-top: 16px;
   font-size: 26px;
-  font-weight: 900;
+  font-weight: 600;
   color: #333;
 `;
 
@@ -52,7 +52,7 @@ export const InfoValue = styled.Text`
   text-align: right;
   width: 50%;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   color: #444447;
 `;
 
@@ -66,7 +66,7 @@ export const ButtonList = styled.View`
   align-items: center;
 `;
 
-export const CancelButton = styled.View`
+export const CancelButton = styled.TouchableOpacity`
   padding: 21px 0;
   width: 40%;
   display: flex;
@@ -86,10 +86,4 @@ export const ConfirmButton = styled.View`
   width: 57%;
   display: flex;
   align-items: center;
-`;
-
-export const ConfirmText = styled.Text`
-  font-size: 16px;
-  color: #ffffff;
-  font-weight: 700;
 `;

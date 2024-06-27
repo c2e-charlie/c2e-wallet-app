@@ -18,9 +18,13 @@ import { goToConfirm } from '@/pages/Confirm/index.utils';
 import { BottomSheetModal } from '@gorhom/bottom-sheet';
 
 const Index = ({
+  quantity,
+  address,
   navigation,
   bottomSheetModalRef,
 }: {
+  quantity: string;
+  address: string;
   navigation?: any;
   bottomSheetModalRef: RefObject<BottomSheetModal>;
 }) => {
@@ -28,12 +32,12 @@ const Index = ({
     <Container>
       <MainContent>
         <SendTokenIcon source={''} />
-        <SendAmount>6.010 C2E</SendAmount>
+        <SendAmount>{quantity} C2E</SendAmount>
         <InfoContainer>
           <InfoItem>
             <InfoText>받는주소</InfoText>
             <InfoValue numberOfLines={1} ellipsizeMode={'middle'}>
-              0x8284F52A3369f23D8587fd90bDE6abfF9Be2665D
+              {address}
             </InfoValue>
           </InfoItem>
           <InfoItem>
@@ -43,7 +47,7 @@ const Index = ({
         </InfoContainer>
       </MainContent>
       <ButtonList>
-        <CancelButton>
+        <CancelButton onPress={() => bottomSheetModalRef.current?.close()}>
           <CancelText>취소</CancelText>
         </CancelButton>
         <ConfirmButton>
@@ -59,4 +63,5 @@ const Index = ({
     </Container>
   );
 };
+
 export default Index;

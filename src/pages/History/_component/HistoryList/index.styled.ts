@@ -6,5 +6,5 @@ export const DateText = styled.Text`
   margin: 30px 0 16px;
   color: #a8adbb;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
 `;

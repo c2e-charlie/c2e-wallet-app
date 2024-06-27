@@ -4,6 +4,7 @@ export const Container = styled.SafeAreaView`
   flex: 1;
   align-items: center;
   background-color: #ffffff;
+  justify-content: space-between;
 `;
 
 export const QuantityContainer = styled.View`
@@ -56,6 +57,6 @@ export const ButtonText = styled.Text`
 `;
 
 export const ButtonContainer = styled.View`
-  padding: 20px 20px 0;
+  padding: 20px 20px 5px;
   width: 100%;
 `;

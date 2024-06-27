@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   AddressText,
+  AddressTouchable,
   ButtonList,
   Container,
   Content,
@@ -20,7 +21,7 @@ import Header from '@/components/Header';
 import CustomInput from '@/components/CustomInput';
 import DoneStarIcon from 'public/assets/images/icons/wallet/done_star_icon.png';
 import StarIcon from 'public/assets/images/icons/wallet/star_icon.png';
-import { AddressItemType } from '@/pages/SendAddress/index.type';
+import { AddressItemType, Props } from '@/pages/SendAddress/index.type';
 import { ListRenderItemInfo } from 'react-native';
 import CustomButton from '@/components/CustomButton';
 import QrIcon from 'public/assets/images/icons/wallet/qr_icon.png';
@@ -35,13 +36,21 @@ import { checkAddress, isDeleteActive } from '@/pages/SendAddress/index.utils';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '@/navigations/index.type';
 
-const Index = () => {
+const Index: React.FC<Props> = ({ route }) => {
+  const { qrScanAddress, quantity } = route.params;
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [address, setAddress] = useState<string>('');
   const [isAddressError, setIsAddressError] = useState<boolean>(false);
   const [isDeleteState, setIsDeleteState] = useState<boolean>(false);
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const handleModalPress = handlePresentModalPress(bottomSheetModalRef);
+
+  useEffect(() => {
+    if (qrScanAddress) {
+      setAddress(qrScanAddress);
+      handleModalPress();
+    }
+  }, [qrScanAddress]);
 
   useEffect(() => {
     checkAddress(address, setIsAddressError);
@@ -69,31 +78,34 @@ const Index = () => {
           <HistoryContainer
             data={addressList}
             ListEmptyComponent={<Empty />}
-            renderItem={({ item }: ListRenderItemInfo<AddressItemType>) => {
-              return (
-                <HistoryItem>
+            renderItem={({ item }: ListRenderItemInfo<AddressItemType>) => (
+              <HistoryItem>
+                <AddressTouchable onPress={() => setAddress(item.address)}>
                   <AddressText numberOfLines={1} ellipsizeMode={'middle'}>
                     {item.address}
                   </AddressText>
-                  <StarButton>
-                    {isDeleteState ? (
-                      <StarImage source={CloseIcon} />
-                    ) : (
-                      <StarImage
-                        source={item.favorites ? DoneStarIcon : StarIcon}
-                      />
-                    )}
-                  </StarButton>
-                </HistoryItem>
-              );
-            }}
+                </AddressTouchable>
+                <StarButton>
+                  {isDeleteState ? (
+                    <StarImage source={CloseIcon} />
+                  ) : (
+                    <StarImage
+                      source={item.favorites ? DoneStarIcon : StarIcon}
+                    />
+                  )}
+                </StarButton>
+              </HistoryItem>
+            )}
           />
         </MainContent>
       </Content>
       <ButtonList>
         <QrCodeButton
           onPress={() =>
-            navigation.navigate('WalletStack', { screen: 'QrScanner' })
+            navigation.navigate('WalletStack', {
+              screen: 'QrScanner',
+              params: quantity,
+            })
           }>
           <QrCodeImage source={QrIcon} />
         </QrCodeButton>
@@ -103,13 +115,15 @@ const Index = () => {
             shadow={true}
             fullWidth
             text={'다음'}
-            disabled={isAddressError}
+            disabled={isAddressError || address.length < 42}
             gradientColors={['#1BE0CD', '#47C8FC']}
           />
         </NextButton>
       </ButtonList>
       <BottomSheetComponent ref={bottomSheetModalRef}>
         <SendModal
+          quantity={quantity}
+          address={address}
           navigation={navigation}
           bottomSheetModalRef={bottomSheetModalRef}
         />

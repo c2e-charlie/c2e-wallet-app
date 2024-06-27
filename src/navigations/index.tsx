@@ -1,25 +1,17 @@
 import React from 'react';
-import Bottom from '@/navigations/Bottom';
-import WalletStack from '@/navigations/Wallet/WalletStack';
-import LoginStack from '@/navigations/Login/LoginStack';
-import CommunityStack from '@/navigations/Community/CommunityStack';
-import QuestStack from '@/navigations/Quest/QuestStack';
-import VendingMachineStack from '@/navigations/VendingMachine/VendingStack';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Drawer from './Drawer';
+import Login from '@/navigations/Login/LoginStack';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const Nav = createNativeStackNavigator();
+const Nav = createStackNavigator();
 
 const Index = () => {
   return (
     <Nav.Navigator
       initialRouteName="Bottom"
       screenOptions={{ headerShown: false }}>
-      <Nav.Screen name="LoginStack" component={LoginStack} />
-      <Nav.Screen name="Bottom" component={Bottom} />
-      <Nav.Screen name="CommunityStack" component={CommunityStack} />
-      <Nav.Screen name="QuestStack" component={QuestStack} />
-      <Nav.Screen name="WalletStack" component={WalletStack} />
-      <Nav.Screen name="VendingMachineStack" component={VendingMachineStack} />
+      <Nav.Screen name="Login" component={Login} />
+      <Nav.Screen name="Drawer" component={Drawer} />
     </Nav.Navigator>
   );
 };

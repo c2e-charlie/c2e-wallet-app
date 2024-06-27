@@ -10,12 +10,6 @@ import BiometricAuthConfirm from '@/pages/BiometricAuthConfirm';
 const Stack = createStackNavigator();
 
 const LoginStack = () => {
-  const forFade = ({ current }: any) => ({
-    cardStyle: {
-      opacity: current.progress,
-    },
-  });
-
   const userToken = '';
 
   const LoginPasswordWrapper = () => {

@@ -6,7 +6,7 @@ import { ModalProps } from '@/components/Modal/index.type';
 
 export const modalStateAtom = atom<boolean>(false);
 
-const Index = ({ children, isModalState, setIsModalState }: ModalProps) => {
+const Index = ({ children, isModalState }: ModalProps) => {
   return (
     <Modal isVisible={isModalState}>
       <View

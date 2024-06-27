@@ -22,7 +22,8 @@ export const TabTouchable = styled.TouchableOpacity<{
   height: 50px;
   justify-content: center;
   align-items: center;
-  background-color: ${({ active }) => (active ? '#fff' : '#f0f0f3')};
+  background-color: ${({ active }: { active: boolean }) =>
+    active ? '#fff' : '#f0f0f3'};
   border-top-left-radius: 26px;
   border-top-right-radius: 26px;
 `;
@@ -31,7 +32,8 @@ export const TabText = styled.Text<{
   active?: boolean;
 }>`
   font-size: 14px;
-  color: ${({ active }) => (active ? '#444447' : '#9ba1b1')};
+  color: ${({ active }: { active: boolean }) =>
+    active ? '#444447' : '#9ba1b1'};
   font-weight: 700;
 `;
 

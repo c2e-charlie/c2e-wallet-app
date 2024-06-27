@@ -80,26 +80,13 @@ export const BalanceBottom = styled.View`
 `;
 
 export const TransactionItem = styled.TouchableOpacity`
-  padding: 14px 0;
-  width: 90px;
-  border-radius: 30px;
-  background: #fff;
-  align-items: center;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  //border-radius: 30px;
 `;
 
 export const TransactionItemTitle = styled.Text`
   font-size: 14px;
   color: #9ba1b1;
   font-weight: 800;
-`;
-
-export const SwapItem = styled.View`
-  padding: 14px 0;
-  width: 90px;
-  border-radius: 30px;
-  background: #fff;
-  align-items: center;
 `;
 
 export const PointContainer = styled.View`
@@ -132,4 +119,9 @@ export const PointAmount = styled.Text`
   font-size: 18px;
   color: #444447;
   font-weight: 800;
+`;
+
+export const ButtonImage = styled.Image`
+  width: 90px;
+  height: 44px;
 `;

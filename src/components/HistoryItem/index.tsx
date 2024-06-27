@@ -23,10 +23,10 @@ const Index = ({
   goDetail,
 }: {
   TokenInfo: HistoryType;
-  goDetail: () => void;
+  goDetail?: () => void;
 }) => {
   return (
-    <Container onPress={() => goDetail()}>
+    <Container onPress={() => goDetail!()}>
       <ListLeft>
         <ListIcon source={transTypeIcon[TokenInfo.transType]} />
         <ListInfo>

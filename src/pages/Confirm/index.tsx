@@ -8,9 +8,11 @@ import {
 import CheckBlue from 'public/assets/images/icons/wallet/check_blue.png';
 import CustomButton from '@/components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '@/navigations/index.type';
 
 const Index = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   return (
     <Container>

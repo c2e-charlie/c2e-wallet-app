@@ -15,9 +15,11 @@ import { HistoryText } from '@/pages/SendAddress/index.styled';
 import Empty from '@/components/Empty';
 import { useNavigation } from '@react-navigation/native';
 import HistoryItem from '@/components/HistoryItem';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '@/navigations/index.type';
 
 const Index = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   return (
     <Container>
       <Header />
@@ -61,7 +63,7 @@ const Index = () => {
         <HistoryList
           data={demoData}
           ListEmptyComponent={<Empty />}
-          renderItem={({ item }) => {
+          renderItem={({ item }: { item: any }) => {
             return <HistoryItem TokenInfo={item} />;
           }}
         />
@@ -72,7 +74,7 @@ const Index = () => {
 
 export default Index;
 
-const demoData = [
+const demoData: any[] = [
   // {
   //   state: 'SUCCESS',
   //   amount: '0.1234',

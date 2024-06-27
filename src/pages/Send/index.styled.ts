@@ -21,7 +21,8 @@ export const C2EContainer = styled.View`
 
 export const QuantityText = styled.Text<{ quantity: string }>`
   font-size: 26px;
-  color: ${({ quantity }) => (quantity === '' ? '#F0F0F3' : '#444447')};
+  color: ${({ quantity }: { quantity: string }) =>
+    quantity === '' ? '#F0F0F3' : '#444447'};
   font-weight: 800;
 `;
 

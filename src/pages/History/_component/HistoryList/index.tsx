@@ -6,13 +6,15 @@ import {
 } from '@/pages/History/_component/HistoryList/index.styled';
 import { HistoryListType } from '@/pages/History/_component/HistoryList/index.type';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '@/navigations/index.type';
 
 const Index = ({
   historyItem,
   beforeDate,
   storedBeforeDate,
 }: HistoryListType) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const date = new Date(historyItem.confirmAt);
 
   const goDetail = () => {

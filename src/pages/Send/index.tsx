@@ -14,9 +14,11 @@ import NumberPad from '@/components/KeyPad/NumberPad';
 import Header from '@/components/Header';
 import CustomButton from '@/components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '@/navigations/index.type';
 
 const Index = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [quantity, setQuantity] = useState('');
 
   return (
@@ -37,7 +39,9 @@ const Index = () => {
       <NumberPad onValueChange={setQuantity} />
       <ButtonContainer>
         <CustomButton
-          onPress={() => navigation.navigate('SendAddress')}
+          onPress={() =>
+            navigation.navigate('WalletStack', { screen: 'SendAddress' })
+          }
           fullWidth
           text={'다음'}
           gradientColors={['#1BE0CD', '#47C8FC']}

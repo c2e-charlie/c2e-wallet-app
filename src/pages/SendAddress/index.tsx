@@ -32,9 +32,11 @@ import { useNavigation } from '@react-navigation/native';
 import CloseIcon from 'public/assets/images/icons/wallet/close_icon.png';
 import Empty from '@/components/Empty';
 import { checkAddress, isDeleteActive } from '@/pages/SendAddress/index.utils';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '@/navigations/index.type';
 
 const Index = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [address, setAddress] = useState<string>('');
   const [isAddressError, setIsAddressError] = useState<boolean>(false);
   const [isDeleteState, setIsDeleteState] = useState<boolean>(false);
@@ -89,7 +91,10 @@ const Index = () => {
         </MainContent>
       </Content>
       <ButtonList>
-        <QrCodeButton onPress={() => navigation.navigate('QrScanner')}>
+        <QrCodeButton
+          onPress={() =>
+            navigation.navigate('WalletStack', { screen: 'QrScanner' })
+          }>
           <QrCodeImage source={QrIcon} />
         </QrCodeButton>
         <NextButton>

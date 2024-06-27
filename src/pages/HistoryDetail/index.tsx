@@ -19,7 +19,7 @@ import { transTypeIcon } from '@/components/HistoryItem/index.utils';
 import { Props } from '@/pages/HistoryDetail/index.type';
 
 const Index: React.FC<Props> = ({ route }) => {
-  const historyItem = route.params.historyItem;
+  const historyItem = route!.params.historyItem;
 
   return (
     <Container>

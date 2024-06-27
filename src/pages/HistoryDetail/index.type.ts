@@ -8,5 +8,5 @@ type StackParamList = {
 type HistoryDetailRouteProp = RouteProp<StackParamList, 'HistoryDetail'>;
 
 export type Props = {
-  route: HistoryDetailRouteProp;
+  route?: HistoryDetailRouteProp;
 };

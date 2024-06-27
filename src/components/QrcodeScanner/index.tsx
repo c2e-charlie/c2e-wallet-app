@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '@/navigations/index.type';
 
-const QrcodeScanner = ({ quantity }: { quantity: string }) => {
+const QrcodeScanner = ({ quantity }: { quantity?: string }) => {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const device = useCameraDevice('back');
   const codeScanner = useCodeScanner({

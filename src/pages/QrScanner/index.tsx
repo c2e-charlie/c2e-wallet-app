@@ -15,8 +15,8 @@ import {
 import ArrowLeft from 'public/assets/images/icons/wallet/white_left_arrow.png';
 import { useNavigation } from '@react-navigation/native';
 
-const Index = ({ route }: { route: { params: string } }) => {
-  const quantity = route.params;
+const Index = ({ route }: { route?: { params: string } }) => {
+  const quantity = route?.params;
   const navigation = useNavigation();
 
   return (

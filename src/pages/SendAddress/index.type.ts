@@ -15,5 +15,5 @@ type StackParamList = {
 type SendAddressRouteProp = RouteProp<StackParamList, 'SendAddress'>;
 
 export type Props = {
-  route: SendAddressRouteProp;
+  route?: SendAddressRouteProp;
 };

@@ -2,13 +2,13 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Wallet from '@/pages/Wallet';
 import Send from '@/pages/Send';
-import SendAddress from '@/pages/SendAddress';
 import Confirm from '@/pages/Confirm';
 import QrScanner from '@/pages/QrScanner';
 import QrAddress from '@/pages/QrAddress';
 import TokenDetail from '@/pages/TokenDetail';
 import History from '@/pages/History';
 import HistoryDetail from '@/pages/HistoryDetail';
+import SendAddress from '@/pages/SendAddress';
 
 const Stack = createNativeStackNavigator();
 

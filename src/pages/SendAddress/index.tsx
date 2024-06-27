@@ -37,7 +37,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '@/navigations/index.type';
 
 const Index: React.FC<Props> = ({ route }) => {
-  const { qrScanAddress, quantity } = route.params;
+  const { qrScanAddress, quantity } = route!.params;
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const [address, setAddress] = useState<string>('');
   const [isAddressError, setIsAddressError] = useState<boolean>(false);

@@ -12,6 +12,17 @@ const defaultConfig = getDefaultConfig(__dirname);
 const config = {
   transformer: {
     unstable_allowRequireContext: true,
+    getTransformOptions: async () => ({
+      transform: {
+        experimentalImportSupport: true,
+        inlineRequires: true,
+      },
+    }),
+    // This detects entry points of React app and transforms them
+    // For the other files this will switch to use default `metro-react-native-babel-transformer` for transforming
+    babelTransformerPath: require.resolve(
+      'react-native-react-bridge/lib/plugin',
+    ),
   },
   resolver: {
     alias: {
@@ -27,8 +38,11 @@ const config = {
       zlib: require.resolve('empty-module'), // browserify-zlib can be polyfilled here if needed
       path: require.resolve('empty-module'),
       crypto: require.resolve('crypto-browserify'),
-      stream: require.resolve('readable-stream'),
+      stream: require.resolve('stream-browserify'),
+      buffer: require.resolve('buffer'),
     },
+    assetExts: ['svg', 'png', 'json'],
+    sourceExts: ['js', 'mjs', 'cjs', 'jsx', 'ts', 'tsx'],
     ...defaultConfig.resolver,
   },
 };
